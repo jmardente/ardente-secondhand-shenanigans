@@ -3,127 +3,128 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Ardente Secondhand Shenanigans — secondhand finds, vintage surprises, electronics, home goods, clothing, collectibles and more. Coming soon." />
+  <meta name="description" content="Ardente Secondhand Shenanigans — secondhand finds, 80s treasures, vintage surprises, electronics, home decor, clothing, collectibles and more. Coming soon." />
   <title>Ardente Secondhand Shenanigans</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=League+Spartan:wght@700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&family=League+Spartan:wght@700;800&family=Pacifico&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div class="announcement">COMING SOON — THE SHENANIGANS ARE JUST GETTING STARTED</div>
+  <div class="top-strip">★ NEW FINDS ADDED OFTEN &nbsp; ★ &nbsp; SECONDHAND FINDS. FIRST-CLASS FUN. &nbsp; ★ &nbsp; THANK YOU FOR SUPPORTING SMALL!</div>
 
-  <header class="site-header" id="home">
-    <div class="brand-wrap">
-      <div class="brand-mark" aria-hidden="true">
-        <span class="truck">🛻</span>
-      </div>
-      <div>
-        <p class="eyebrow">ARDENTE</p>
-        <h1>Secondhand<br><span>Shenanigans</span></h1>
-        <p class="tagline">We bought it. We kept it. Now it’s your turn.</p>
+  <header class="hero" id="home">
+    <div class="sun-rays" aria-hidden="true"></div>
+    <div class="hero-inner">
+      <section class="brand-panel" aria-label="Ardente Secondhand Shenanigans">
+        <div class="route-badge">ROUTE<br><strong>66</strong></div>
+        <p class="ardente">ARDENTE</p>
+        <p class="secondhand">Secondhand</p>
+        <p class="shenanigans">Shenanigans</p>
+        <div class="brand-rule">FIND IT. LOVE IT. TAKE IT HOME.</div>
+        <div class="brand-script">New Finds. Old Vibes.</div>
+      </section>
+
+      <section class="hero-side">
+        <form class="treasure-search" id="treasure-search" role="search">
+          <label class="sr-only" for="search-input">Search the current site</label>
+          <input id="search-input" type="search" placeholder="Search for treasures..." autocomplete="off" />
+          <button type="submit">GO</button>
+        </form>
+        <p class="search-note" id="search-note" aria-live="polite">Search the categories and preview sections already on the site.</p>
+        <div class="wood-sign" aria-label="Vintage retro unique">
+          <strong>VINTAGE</strong>
+          <span>★</span>
+          <strong>RETRO</strong>
+          <span>★</span>
+          <strong>UNIQUE</strong>
+          <small>Always something good.</small>
+        </div>
+      </section>
+
+      <div class="truck-scene" aria-hidden="true">
+        <div class="truck-load">🪑 📻 💡 📦</div>
+        <div class="truck">🛻</div>
       </div>
     </div>
-    <nav aria-label="Primary navigation">
-      <a href="#home">Home</a>
-      <a href="#categories">What We’ll Sell</a>
-      <a href="#eighties">80s Finds</a>
-      <a href="#about">About</a>
-    </nav>
   </header>
 
-  <main>
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="hero-copy">
-        <p class="kicker">SECONDHAND FINDS. FIRST-RATE FUN.</p>
-        <h2 id="hero-title">One family’s clutter can be somebody else’s treasure.</h2>
-        <p class="hero-text">Furniture, clothing, collectibles, electronics, holiday pieces, vintage surprises and all kinds of wonderfully random finds will eventually live right here.</p>
-        <div class="coming-soon-card">
-          <strong>Not open yet.</strong>
-          <span>We’re building the shop now so it’ll be ready when the first treasures are.</span>
-        </div>
-      </div>
-      <div class="hero-art" aria-hidden="true">
-        <div class="sunburst"></div>
-        <div class="crate crate-a">VINYL<br><span>RECORDS</span></div>
-        <div class="crate crate-b">HOME<br><span>FINDS</span></div>
-        <div class="lamp">💡</div>
-        <div class="radio">📻</div>
-        <div class="chair">🪑</div>
-        <div class="spark spark-1">✦</div>
-        <div class="spark spark-2">✦</div>
-        <div class="spark spark-3">✦</div>
-      </div>
-    </section>
+  <nav class="main-nav" aria-label="Primary navigation">
+    <a href="#home">Home</a>
+    <a href="#categories">All Finds</a>
+    <a href="#eighties">80s & Retro</a>
+    <a href="#categories">Vintage</a>
+    <a href="#categories">Home Decor</a>
+    <a href="#categories">Collectibles</a>
+    <a href="#categories">Clothing</a>
+    <a href="#about">About Us</a>
+  </nav>
 
-    <section class="categories-section" id="categories" aria-labelledby="categories-title">
-      <div class="section-heading">
-        <p class="eyebrow">THE FUTURE TREASURE PILE</p>
-        <h2 id="categories-title">What You’ll Find Here</h2>
-        <p>These are the kinds of secondhand goodies we plan to add as the shop grows.</p>
+  <main>
+    <section class="intro-grid" id="categories">
+      <div class="intro-copy searchable" data-search="good stuff great prices secondhand treasures categories all finds">
+        <p class="script-heading">Good Stuff.</p>
+        <h2>GREAT PRICES.</h2>
+        <p>Handpicked secondhand treasures with stories to tell and memories waiting to happen.</p>
+        <div class="coming-soon">SHOP COMING SOON — WE’RE BUILDING THE TREASURE PILE FIRST.</div>
       </div>
 
       <div class="category-grid">
-        <article class="category-card">
-          <div class="category-icon" aria-hidden="true">🪑</div>
-          <h3>Furniture & Home</h3>
-          <p>Decor, kitchen finds, furniture and useful things looking for a new home.</p>
+        <article class="category-card searchable" data-search="80s retro vintage cassette boombox electronics">
+          <div class="category-art retro-art">📻 📼 🕹️</div>
+          <h3>80s & Retro</h3>
+          <p>Totally rad finds, neon nostalgia, old-school tech and throwback treasures.</p>
         </article>
-        <article class="category-card">
-          <div class="category-icon" aria-hidden="true">👕</div>
-          <h3>Clothing</h3>
-          <p>Pre-loved clothing, accessories and the occasional “why did we buy this?” find.</p>
+        <article class="category-card searchable" data-search="home decor furniture kitchen lamp house">
+          <div class="category-art home-art">🪑 🏺 💡</div>
+          <h3>Home Decor</h3>
+          <p>Furniture, decor, kitchen pieces and useful things ready for another home.</p>
         </article>
-        <article class="category-card">
-          <div class="category-icon" aria-hidden="true">🏺</div>
+        <article class="category-card searchable" data-search="vintage antiques old unique coca cola scale mixer">
+          <div class="category-art vintage-art">⚖️ ☕ 🕰️</div>
+          <h3>Vintage</h3>
+          <p>Older pieces with character, history and just enough wear to make them interesting.</p>
+        </article>
+        <article class="category-card searchable" data-search="clothing clothes accessories jackets boots hats fashion">
+          <div class="category-art clothing-art">🧥 👢 👒</div>
+          <h3>Clothing & Accessories</h3>
+          <p>Pre-loved clothing, shoes, bags and accessories looking for their next adventure.</p>
+        </article>
+        <article class="category-card searchable" data-search="collectibles toys figurines cars memorabilia nostalgia">
+          <div class="category-art collectible-art">🧸 🚗 📷</div>
           <h3>Collectibles</h3>
-          <p>Interesting, nostalgic and just-plain-cool pieces worth another look.</p>
+          <p>Interesting, nostalgic and just-plain-cool things worth another look.</p>
         </article>
-        <article class="category-card">
-          <div class="category-icon" aria-hidden="true">🎄</div>
-          <h3>Holiday</h3>
-          <p>Seasonal decor and holiday finds that deserve another celebration.</p>
-        </article>
-        <article class="category-card">
-          <div class="category-icon" aria-hidden="true">📦</div>
-          <h3>Other Junk</h3>
-          <p>The category for everything that makes us say, “Well… somebody will want it.”</p>
-        </article>
-        <article class="category-card">
-          <div class="category-icon" aria-hidden="true">📺</div>
+        <article class="category-card searchable" data-search="electronics television tv stereo radio gadgets tech">
+          <div class="category-art electronic-art">📺 🎧 📻</div>
           <h3>Electronics</h3>
           <p>Useful gadgets, retro tech and electronics ready for their next chapter.</p>
         </article>
       </div>
     </section>
 
-    <section class="eighties" id="eighties" aria-labelledby="eighties-title">
-      <div class="eighties-art" aria-hidden="true">
-        <span class="cassette">📼</span>
-        <span class="boombox">📻</span>
-        <span class="joystick">🕹️</span>
-        <span class="disc">💿</span>
+    <section class="eighties searchable" id="eighties" data-search="80s eighties retro totally rad big hair neon cassette">
+      <div>
+        <p class="mini-label">TOTALLY RAD TREASURES</p>
+        <h2>A Little Love for the 80s</h2>
+        <p>If it has big-hair energy, neon attitude, cassette-tape nostalgia or gloriously questionable 1980s style, it belongs in the shenanigans.</p>
       </div>
-      <div class="eighties-copy">
-        <p class="kicker">TOTALLY RAD TREASURES</p>
-        <h2 id="eighties-title">A Little Love for the 80s</h2>
-        <p>If it has big hair energy, neon attitude, cassette-tape nostalgia or gloriously questionable 1980s style, it belongs in the shenanigans.</p>
-      </div>
+      <div class="eighties-icons" aria-hidden="true">📼 &nbsp; 📻 &nbsp; 🕹️ &nbsp; 💿</div>
     </section>
 
-    <section class="about" id="about" aria-labelledby="about-title">
-      <p class="eyebrow">WHY THIS EXISTS</p>
-      <h2 id="about-title">Less clutter. More second chances.</h2>
-      <p>Ardente Secondhand Shenanigans is being created as a fun, family-run place for used items that still have plenty of life left in them. The inventory will change as things are found, listed and passed along to their next owner.</p>
+    <section class="about searchable" id="about" data-search="about family secondhand reuse second chances Ardente">
+      <p class="mini-label">WHY THIS EXISTS</p>
+      <h2>Less clutter. More second chances.</h2>
+      <p>Ardente Secondhand Shenanigans is being created as a fun, family-run place for used items that still have plenty of life left in them. Inventory will change as things are found, listed and passed along to their next owner.</p>
     </section>
   </main>
 
   <footer>
-    <div>
-      <p class="footer-brand">Ardente Secondhand Shenanigans</p>
-      <p>Secondhand finds. Family humor. New adventures.</p>
-    </div>
-    <p class="footer-note">Website preview • Shop coming later</p>
+    <strong>ARDENTE SECONDHAND SHENANIGANS</strong>
+    <span>Secondhand finds. Family humor. New adventures.</span>
+    <span>Website preview • Shop coming later</span>
   </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
