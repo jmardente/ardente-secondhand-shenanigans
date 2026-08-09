@@ -1,0 +1,71 @@
+.hero {
+  position: relative;
+  overflow: hidden;
+  min-height: 570px;
+  background-image: url('assets/ardente-secondhand-shenanigans.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-bottom: 8px solid #2d675f;
+}
+
+/* The uploaded artwork already contains the hero design, so hide the temporary CSS artwork. */
+.sun-rays,
+.hero::after,
+.brand-panel,
+.wood-sign,
+.truck-scene {
+  display: none;
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 2;
+  min-height: 570px;
+  padding: 34px clamp(18px, 5vw, 70px);
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+}
+
+.hero-side {
+  width: min(100%, 500px);
+  margin-left: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.search-note {
+  display: none;
+}
+
+@media (max-width: 950px) {
+  .hero,
+  .hero-inner {
+    min-height: 620px;
+  }
+
+  .hero {
+    background-position: center;
+  }
+
+  .hero-side {
+    width: min(100%, 500px);
+  }
+}
+
+@media (max-width: 620px) {
+  .hero,
+  .hero-inner {
+    min-height: 560px;
+  }
+
+  .hero {
+    background-position: center;
+  }
+
+  .hero-inner {
+    padding: 20px 16px;
+  }
+}
