@@ -1,4 +1,18 @@
-const PRODUCTS = [];
+const PRODUCTS = [
+  {
+    id: 'cobalt-blue-art-glass-candle-holders',
+    name: 'Cobalt Blue Art Glass Candle Holders — Set of 3',
+    price: 34.99,
+    image: 'assets/cobalt-blue-art-glass-candle-holders-set3.png',
+    alt: 'Set of three cobalt blue art glass candle holders with clear twisted stems',
+    description: 'Elegant cobalt blue art glass candle holders with clear twisted stems and decorative glass accents. Set of three graduated heights. No maker’s markings found. Pre-owned in good condition; one candle holder has a very small chip on the rim, shown in the product photo. Shipping is not included in the listed price and will be calculated separately.',
+    category: 'Home Decor',
+    condition: 'Good',
+    badge: 'Set of 3',
+    status: 'available',
+    tags: 'cobalt blue glass candle candlestick holder coastal decor hand blown art glass'
+  }
+];
 
 const form = document.getElementById('treasure-search');
 const input = document.getElementById('search-input');
@@ -42,9 +56,9 @@ cartDrawer.innerHTML = `
   <div class="cart-head"><h2>Your Treasure Cart</h2><button class="cart-close" id="cart-close" aria-label="Close cart">×</button></div>
   <div class="cart-items" id="cart-items"></div>
   <div class="cart-footer">
-    <div class="cart-total"><span>Total</span><span id="cart-total">$0.00</span></div>
+    <div class="cart-total"><span>Item Total</span><span id="cart-total">$0.00</span></div>
     <button class="checkout-btn" id="checkout-btn" disabled>Checkout Coming Next</button>
-    <p class="cart-note">The cart is ready. Stripe checkout will be connected after we add your first real products.</p>
+    <p class="cart-note"><strong>Shipping is not included in listed prices.</strong> Shipping costs will be calculated separately. Stripe checkout will be connected next.</p>
   </div>`;
 document.body.appendChild(cartDrawer);
 
@@ -88,7 +102,7 @@ function renderProducts(){
         <h3>${product.name}</h3>
         <div class="product-meta">${product.category}${product.condition ? ` • Condition: ${product.condition}` : ''}</div>
         <div class="product-desc">${product.description || ''}</div>
-        <div class="product-bottom"><strong class="product-price">${money(product.price)}</strong><button class="add-btn" data-add="${product.id}" ${product.status === 'sold' ? 'disabled' : ''}>${product.status === 'sold' ? 'Sold' : 'Add to Cart'}</button></div>
+        <div class="product-bottom"><strong class="product-price">${money(product.price)} + shipping</strong><button class="add-btn" data-add="${product.id}" ${product.status === 'sold' ? 'disabled' : ''}>${product.status === 'sold' ? 'Sold' : 'Add to Cart'}</button></div>
       </div>
     </article>`).join('');
   productGrid.querySelectorAll('[data-add]').forEach(btn => btn.addEventListener('click', () => addToCart(btn.dataset.add)));
