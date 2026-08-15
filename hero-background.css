@@ -41,9 +41,22 @@
   align-items: center;
 }
 
-.search-note {
-  display: none;
+.search-note { display: none; }
+
+/* Antique Books: use the uploaded sale graphics as the listing images. */
+#antique-books .book-card .book-placeholder {
+  min-height: 0;
+  aspect-ratio: 3 / 2;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-size: 0;
 }
+#antique-books .book-card .book-placeholder span { display: none; }
+#antique-books .book-card:nth-child(1) .book-placeholder { background-image: url('assets/book-trails-set.png'); }
+#antique-books .book-card:nth-child(2) .book-placeholder { background-image: url('assets/Charlie-and-the-Chocolate-factory.png'); }
+#antique-books .book-card:nth-child(3) .book-placeholder { background-image: url('assets/the-african-games.png'); }
+#antique-books .book-card:nth-child(4) .book-placeholder { background-image: url('assets/library-of-the-worlds-literature.png'); }
 
 @media (max-width: 950px) {
   .hero {
@@ -51,14 +64,8 @@
     background-size: 100% auto;
     background-position: center top;
   }
-
-  .hero-inner {
-    min-height: 0;
-  }
-
-  .hero-side {
-    width: min(100%, 500px);
-  }
+  .hero-inner { min-height: 0; }
+  .hero-side { width: min(100%, 500px); }
 }
 
 @media (max-width: 620px) {
@@ -67,7 +74,6 @@
     background-size: 100% auto;
     background-position: center top;
   }
-
   .hero-inner {
     min-height: 0;
     padding: 20px 16px;
