@@ -11,6 +11,20 @@ const PRODUCTS = [
     badge: 'Set of 3',
     status: 'available',
     tags: 'cobalt blue glass candle candlestick holder coastal decor hand blown art glass'
+  },
+  {
+    id: 'temp-tations-old-world-red-12-piece-set',
+    name: 'Temp-tations Presentable Ovenware — Old World Red 12-Piece Set',
+    price: 119.99,
+    image: "data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='900' height='900' viewBox='0 0 900 900'%3E%3Crect width='900' height='900' fill='%23f8eddb'/%3E%3Crect x='38' y='38' width='824' height='824' rx='42' fill='none' stroke='%239c2f2b' stroke-width='12'/%3E%3Ctext x='450' y='160' text-anchor='middle' font-family='Georgia,serif' font-size='62' font-weight='bold' fill='%239c2f2b'%3ETemp-tations%3C/text%3E%3Ctext x='450' y='230' text-anchor='middle' font-family='Arial,sans-serif' font-size='34' font-weight='bold' fill='%234f392a'%3EPRESENTABLE OVENWARE%3C/text%3E%3Ctext x='450' y='305' text-anchor='middle' font-family='Georgia,serif' font-size='52' font-style='italic' fill='%239c2f2b'%3EOld World Red%3C/text%3E%3Ctext x='450' y='410' text-anchor='middle' font-family='Arial,sans-serif' font-size='42' font-weight='bold' fill='%234f392a'%3E4 Covered Bakers%3C/text%3E%3Ctext x='450' y='468' text-anchor='middle' font-family='Arial,sans-serif' font-size='38' fill='%234f392a'%3E4 Lids + 4 Wire Racks%3C/text%3E%3Ctext x='450' y='570' text-anchor='middle' font-family='Arial,sans-serif' font-size='58' font-weight='bold' fill='%239c2f2b'%3E12 PIECE SET%3C/text%3E%3Ctext x='450' y='675' text-anchor='middle' font-family='Arial,sans-serif' font-size='44' font-weight='bold' fill='%232e786f'%3ENEVER USED%3C/text%3E%3Ctext x='450' y='770' text-anchor='middle' font-family='Georgia,serif' font-size='64' font-weight='bold' fill='%239c2f2b'%3E$119.99%3C/text%3E%3Ctext x='450' y='820' text-anchor='middle' font-family='Arial,sans-serif' font-size='28' fill='%234f392a'%3E+ shipping calculated before payment%3C/text%3E%3C/svg%3E",
+    alt: 'Temp-tations Presentable Ovenware Old World Red 12-piece set listing',
+    description: 'Four matching covered casserole/bakers, each with its coordinating ceramic lid and black metal serving/storage rack — 12 pieces total. This set has never been used and is in beautiful like-new condition. Shipping will be calculated from the buyer’s ZIP code before payment is collected.',
+    category: 'Home Decor',
+    condition: 'Never used / like new',
+    badge: '12-Piece Set',
+    status: 'available',
+    shippingQuoteOnly: true,
+    tags: 'temp-tations temptations presentable ovenware old world red casserole baker covered dish ceramic lid wire rack unused kitchen bakeware'
   }
 ];
 
@@ -20,7 +34,7 @@ const note = document.getElementById('search-note');
 
 const storeStyles = document.createElement('style');
 storeStyles.textContent = `
-.store-section{padding:58px clamp(18px,5vw,70px);background:#f7ead4;border-top:6px solid #315f59}.store-head{display:flex;justify-content:space-between;gap:20px;align-items:end;flex-wrap:wrap;margin-bottom:24px}.store-head h2{font-family:'League Spartan',sans-serif;font-size:clamp(2.4rem,5vw,4.8rem);line-height:.9;margin:0;color:#2e786f}.store-head p{max-width:620px;line-height:1.6;margin:8px 0 0}.store-toolbar{display:flex;gap:10px;flex-wrap:wrap;margin:24px 0}.filter-btn,.cart-btn,.add-btn,.checkout-btn,.remove-btn{border:0;cursor:pointer;font:inherit;font-weight:800}.filter-btn{background:#e6d3b4;color:#332b24;border:2px solid #684932;border-radius:999px;padding:9px 14px}.filter-btn.active{background:#2e786f;color:#fff}.cart-btn{background:#a33d20;color:#fff1d9;border-radius:12px;padding:12px 16px}.product-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}.product-card{background:#fff7e8;border:3px solid #684932;border-radius:18px;overflow:hidden;box-shadow:0 5px 0 #c09c6c;display:flex;flex-direction:column}.product-image{width:100%;aspect-ratio:1/1;object-fit:cover;background:#dfcfb5}.product-info{padding:16px;display:flex;flex-direction:column;gap:8px;flex:1}.product-badge{display:inline-block;align-self:flex-start;background:#2e786f;color:white;border-radius:999px;padding:5px 9px;font-size:.72rem;font-weight:800;text-transform:uppercase}.product-card h3{font-family:'League Spartan',sans-serif;font-size:1.35rem;margin:0}.product-meta{font-size:.85rem;color:#6b5a4d}.product-desc{font-size:.92rem;line-height:1.5;color:#5b4d42;flex:1}.product-bottom{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:8px}.product-price{font-family:'League Spartan',sans-serif;font-size:1.5rem;color:#a33d20}.add-btn{background:#2e786f;color:white;border-radius:10px;padding:10px 13px}.empty-store{grid-column:1/-1;background:#efe1c7;border:3px dashed #8a6d50;border-radius:18px;padding:36px;text-align:center;line-height:1.6}.cart-drawer{position:fixed;top:0;right:-430px;width:min(92vw,410px);height:100vh;background:#fff8ea;z-index:9999;box-shadow:-8px 0 30px rgba(0,0,0,.2);transition:right .25s ease;display:flex;flex-direction:column}.cart-drawer.open{right:0}.cart-head{padding:20px;border-bottom:3px solid #315f59;display:flex;justify-content:space-between;align-items:center}.cart-head h2{font-family:'League Spartan',sans-serif;margin:0}.cart-close{border:0;background:transparent;font-size:1.8rem;cursor:pointer}.cart-items{padding:16px;overflow:auto;flex:1}.cart-item{padding:12px 0;border-bottom:1px solid #d7c3a6}.cart-line{display:flex;justify-content:space-between;gap:10px}.remove-btn{background:transparent;color:#a33d20;padding:3px 0}.cart-footer{padding:18px;border-top:3px solid #315f59}.cart-total{font-family:'League Spartan',sans-serif;font-size:1.35rem;display:flex;justify-content:space-between;margin-bottom:12px}.checkout-btn{width:100%;background:#a33d20;color:white;border-radius:12px;padding:13px}.checkout-btn[disabled]{opacity:.5;cursor:not-allowed}.cart-note{font-size:.78rem;line-height:1.4;color:#6b5a4d;margin-top:10px}.nav-cart-count{background:#a33d20;color:white;border-radius:999px;padding:2px 7px;font-size:.72rem;margin-left:4px}
+.store-section{padding:58px clamp(18px,5vw,70px);background:#f7ead4;border-top:6px solid #315f59}.store-head{display:flex;justify-content:space-between;gap:20px;align-items:end;flex-wrap:wrap;margin-bottom:24px}.store-head h2{font-family:'League Spartan',sans-serif;font-size:clamp(2.4rem,5vw,4.8rem);line-height:.9;margin:0;color:#2e786f}.store-head p{max-width:620px;line-height:1.6;margin:8px 0 0}.store-toolbar{display:flex;gap:10px;flex-wrap:wrap;margin:24px 0}.filter-btn,.cart-btn,.add-btn,.checkout-btn,.remove-btn,.quote-product-btn{border:0;cursor:pointer;font:inherit;font-weight:800}.filter-btn{background:#e6d3b4;color:#332b24;border:2px solid #684932;border-radius:999px;padding:9px 14px}.filter-btn.active{background:#2e786f;color:#fff}.cart-btn{background:#a33d20;color:#fff1d9;border-radius:12px;padding:12px 16px}.product-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}.product-card{background:#fff7e8;border:3px solid #684932;border-radius:18px;overflow:hidden;box-shadow:0 5px 0 #c09c6c;display:flex;flex-direction:column}.product-image{width:100%;aspect-ratio:1/1;object-fit:cover;background:#dfcfb5}.product-info{padding:16px;display:flex;flex-direction:column;gap:8px;flex:1}.product-badge{display:inline-block;align-self:flex-start;background:#2e786f;color:white;border-radius:999px;padding:5px 9px;font-size:.72rem;font-weight:800;text-transform:uppercase}.product-card h3{font-family:'League Spartan',sans-serif;font-size:1.35rem;margin:0}.product-meta{font-size:.85rem;color:#6b5a4d}.product-desc{font-size:.92rem;line-height:1.5;color:#5b4d42;flex:1}.product-bottom{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:8px;flex-wrap:wrap}.product-price{font-family:'League Spartan',sans-serif;font-size:1.5rem;color:#a33d20}.add-btn,.quote-product-btn{background:#2e786f;color:white;border-radius:10px;padding:10px 13px;text-decoration:none;display:inline-block}.shipping-before-payment{font-size:.82rem;line-height:1.45;background:#f2dfbf;border-left:4px solid #a33d20;padding:9px 10px;border-radius:7px;color:#4f392a}.empty-store{grid-column:1/-1;background:#efe1c7;border:3px dashed #8a6d50;border-radius:18px;padding:36px;text-align:center;line-height:1.6}.cart-drawer{position:fixed;top:0;right:-430px;width:min(92vw,410px);height:100vh;background:#fff8ea;z-index:9999;box-shadow:-8px 0 30px rgba(0,0,0,.2);transition:right .25s ease;display:flex;flex-direction:column}.cart-drawer.open{right:0}.cart-head{padding:20px;border-bottom:3px solid #315f59;display:flex;justify-content:space-between;align-items:center}.cart-head h2{font-family:'League Spartan',sans-serif;margin:0}.cart-close{border:0;background:transparent;font-size:1.8rem;cursor:pointer}.cart-items{padding:16px;overflow:auto;flex:1}.cart-item{padding:12px 0;border-bottom:1px solid #d7c3a6}.cart-line{display:flex;justify-content:space-between;gap:10px}.remove-btn{background:transparent;color:#a33d20;padding:3px 0}.cart-footer{padding:18px;border-top:3px solid #315f59}.cart-total{font-family:'League Spartan',sans-serif;font-size:1.35rem;display:flex;justify-content:space-between;margin-bottom:12px}.checkout-btn{width:100%;background:#a33d20;color:white;border-radius:12px;padding:13px}.checkout-btn[disabled]{opacity:.5;cursor:not-allowed}.cart-note{font-size:.78rem;line-height:1.4;color:#6b5a4d;margin-top:10px}.nav-cart-count{background:#a33d20;color:white;border-radius:999px;padding:2px 7px;font-size:.72rem;margin-left:4px}
 @media(max-width:1050px){.product-grid{grid-template-columns:repeat(3,1fr)}}@media(max-width:760px){.product-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:520px){.product-grid{grid-template-columns:1fr}.store-section{padding:42px 16px}}
 `;
 document.head.appendChild(storeStyles);
@@ -102,15 +116,21 @@ function renderProducts(){
         <h3>${product.name}</h3>
         <div class="product-meta">${product.category}${product.condition ? ` • Condition: ${product.condition}` : ''}</div>
         <div class="product-desc">${product.description || ''}</div>
-        <div class="product-bottom"><strong class="product-price">${money(product.price)} + shipping</strong><button class="add-btn" data-add="${product.id}" ${product.status === 'sold' ? 'disabled' : ''}>${product.status === 'sold' ? 'Sold' : 'Add to Cart'}</button></div>
+        ${product.shippingQuoteOnly ? '<div class="shipping-before-payment"><strong>Payment after shipping calculation:</strong> Send your ZIP code first. We will calculate shipping and confirm the final total before any payment is collected.</div>' : ''}
+        <div class="product-bottom"><strong class="product-price">${money(product.price)} + shipping</strong>${product.shippingQuoteOnly ? `<a class="quote-product-btn" href="#shipping-quote" data-product-quote="${product.name}">Get Shipping Quote / Purchase</a>` : `<button class="add-btn" data-add="${product.id}" ${product.status === 'sold' ? 'disabled' : ''}>${product.status === 'sold' ? 'Sold' : 'Add to Cart'}</button>`}</div>
       </div>
     </article>`).join('');
   productGrid.querySelectorAll('[data-add]').forEach(btn => btn.addEventListener('click', () => addToCart(btn.dataset.add)));
+  productGrid.querySelectorAll('[data-product-quote]').forEach(btn => btn.addEventListener('click', () => {
+    const select = document.getElementById('quote-book');
+    if (select) select.value = btn.dataset.productQuote;
+    setTimeout(() => { const zip = document.getElementById('quote-zip'); if (zip) zip.focus(); }, 450);
+  }));
 }
 
 function addToCart(id){
   const product = PRODUCTS.find(item => item.id === id);
-  if (!product || product.status === 'sold') return;
+  if (!product || product.status === 'sold' || product.shippingQuoteOnly) return;
   if (!cart.includes(id)) cart.push(id);
   saveCart();
   renderCart();
@@ -120,7 +140,7 @@ function addToCart(id){
 function saveCart(){ localStorage.setItem('ardente-shenanigans-cart', JSON.stringify(cart)); }
 
 function renderCart(){
-  const valid = cart.map(id => PRODUCTS.find(p => p.id === id)).filter(Boolean);
+  const valid = cart.map(id => PRODUCTS.find(p => p.id === id)).filter(p => p && !p.shippingQuoteOnly);
   cart = valid.map(p => p.id);
   saveCart();
   document.getElementById('cart-count').textContent = valid.length;
@@ -128,6 +148,29 @@ function renderCart(){
   document.getElementById('cart-total').textContent = money(valid.reduce((sum,p) => sum + p.price,0));
   document.querySelectorAll('[data-remove]').forEach(btn => btn.addEventListener('click', () => { cart = cart.filter(id => id !== btn.dataset.remove); renderCart(); }));
 }
+
+function setupShippingQuoteItems(){
+  const select = document.getElementById('quote-book');
+  if (!select) return;
+  const label = document.querySelector('label[for="quote-book"]');
+  if (label) label.textContent = 'Item or Set';
+  if (select.options.length && select.options[0].value === '') select.options[0].textContent = 'Choose an item...';
+  PRODUCTS.filter(p => p.shippingQuoteOnly).forEach(product => {
+    if (![...select.options].some(option => option.value === product.name)) {
+      const option = document.createElement('option');
+      option.value = product.name;
+      option.textContent = product.name;
+      select.appendChild(option);
+    }
+  });
+  const quoteCopy = document.querySelector('.shipping-quote-copy');
+  if (quoteCopy) {
+    const paragraph = quoteCopy.querySelector('p:nth-of-type(2)');
+    if (paragraph) paragraph.textContent = 'Tell us which item you want and where it is going. We will calculate the shipping cost for your ZIP code and send you the final total before you pay. Your request does not obligate you to purchase.';
+  }
+}
+
+setupShippingQuoteItems();
 
 document.getElementById('open-cart').addEventListener('click', () => cartDrawer.classList.add('open'));
 document.getElementById('cart-close').addEventListener('click', () => cartDrawer.classList.remove('open'));
