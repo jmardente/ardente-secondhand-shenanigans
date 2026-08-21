@@ -25,6 +25,20 @@ const PRODUCTS = [
     status: 'available',
     shippingQuoteOnly: true,
     tags: 'temp-tations temptations presentable ovenware old world red casserole baker covered dish ceramic lid wire rack unused kitchen bakeware'
+  },
+  {
+    id: 'fisher-price-little-people-share-care-safari',
+    name: 'Fisher-Price Little People Share & Care Safari — Complete Set FHF35',
+    price: 179.99,
+    image: 'assets/little-people-safari.png',
+    alt: 'Fisher-Price Little People Share and Care Safari complete set with safari guide and six animals',
+    description: 'Complete Fisher-Price Little People Share & Care Safari playset, model FHF35. Includes all original pieces, safari guide and 6 animals. Features 6 animal habitats, working zipline, waterfall, peek-a-boo play, lights, sounds and music. Gently used, clean and in excellent condition with excellent stickers. From a smoke-free home. Batteries were never installed.',
+    category: 'Collectibles',
+    condition: 'Gently used / excellent',
+    badge: 'Complete Set',
+    status: 'available',
+    shippingQuoteOnly: true,
+    tags: 'Fisher Price Little People Share Care Safari FHF35 toy playset complete animals safari guide zipline waterfall vintage collectible learning imaginative play'
   }
 ];
 
