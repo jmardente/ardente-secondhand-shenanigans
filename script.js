@@ -5,11 +5,12 @@ const PRODUCTS = [
     price: 34.99,
     image: 'assets/cobalt-blue-art-glass-candle-holders-set3.png',
     alt: 'Set of three cobalt blue art glass candle holders with clear twisted stems',
-    description: 'Elegant cobalt blue art glass candle holders with clear twisted stems and decorative glass accents. Set of three graduated heights. No maker’s markings found. Pre-owned in good condition; one candle holder has a very small chip on the rim, shown in the product photo. Shipping is not included in the listed price and will be calculated separately.',
+    description: 'Elegant cobalt blue art glass candle holders with clear twisted stems and decorative glass accents. Set of three graduated heights. No maker’s markings found. Pre-owned in good condition; one candle holder has a very small chip on the rim, shown in the product photo.',
     category: 'Home Decor',
     condition: 'Good',
     badge: 'Set of 3',
     status: 'available',
+    highlights: ['Set of three graduated-height candle holders','Cobalt-blue art glass with clear twisted stems','No maker markings found','Small rim chip is disclosed and shown in the listing photo'],
     tags: 'cobalt blue glass candle candlestick holder coastal decor hand blown art glass'
   },
   {
@@ -18,12 +19,13 @@ const PRODUCTS = [
     price: 119.99,
     image: 'temptation-ovenware-set.png',
     alt: 'Temp-tations Presentable Ovenware Old World Red 12-piece set listing',
-    description: 'Four matching covered casserole/bakers, each with its coordinating ceramic lid and black metal serving/storage rack — 12 pieces total. This set has never been used and is in beautiful like-new condition. Shipping will be calculated from the buyer’s ZIP code before payment is collected.',
+    description: 'Four matching covered casserole/bakers, each with its coordinating ceramic lid and black metal serving/storage rack — 12 pieces total. This set has never been used and is in beautiful like-new condition.',
     category: 'Home Decor',
     condition: 'Never used / like new',
     badge: '12-Piece Set',
     status: 'available',
     shippingQuoteOnly: true,
+    highlights: ['12 pieces total','Four matching casserole/bakers','Four coordinating ceramic lids','Four black metal serving/storage racks','Never used'],
     tags: 'temp-tations temptations presentable ovenware old world red casserole baker covered dish ceramic lid wire rack unused kitchen bakeware'
   },
   {
@@ -38,6 +40,7 @@ const PRODUCTS = [
     badge: 'Complete Set',
     status: 'available',
     shippingQuoteOnly: true,
+    highlights: ['Complete FHF35 set','Includes safari guide and all 6 animals','Excellent stickers','Working play features','Batteries were never installed','Smoke-free home'],
     tags: 'Fisher Price Little People Share Care Safari FHF35 toy playset complete animals safari guide zipline waterfall vintage collectible learning imaginative play'
   }
 ];
@@ -48,8 +51,9 @@ const note = document.getElementById('search-note');
 
 const storeStyles = document.createElement('style');
 storeStyles.textContent = `
-.store-section{padding:58px clamp(18px,5vw,70px);background:#f7ead4;border-top:6px solid #315f59}.store-head{display:flex;justify-content:space-between;gap:20px;align-items:end;flex-wrap:wrap;margin-bottom:24px}.store-head h2{font-family:'League Spartan',sans-serif;font-size:clamp(2.4rem,5vw,4.8rem);line-height:.9;margin:0;color:#2e786f}.store-head p{max-width:620px;line-height:1.6;margin:8px 0 0}.store-toolbar{display:flex;gap:10px;flex-wrap:wrap;margin:24px 0}.filter-btn,.cart-btn,.add-btn,.checkout-btn,.remove-btn,.quote-product-btn{border:0;cursor:pointer;font:inherit;font-weight:800}.filter-btn{background:#e6d3b4;color:#332b24;border:2px solid #684932;border-radius:999px;padding:9px 14px}.filter-btn.active{background:#2e786f;color:#fff}.cart-btn{background:#a33d20;color:#fff1d9;border-radius:12px;padding:12px 16px}.product-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}.product-card{background:#fff7e8;border:3px solid #684932;border-radius:18px;overflow:hidden;box-shadow:0 5px 0 #c09c6c;display:flex;flex-direction:column}.product-image{width:100%;aspect-ratio:1/1;object-fit:cover;background:#dfcfb5}.product-info{padding:16px;display:flex;flex-direction:column;gap:8px;flex:1}.product-badge{display:inline-block;align-self:flex-start;background:#2e786f;color:white;border-radius:999px;padding:5px 9px;font-size:.72rem;font-weight:800;text-transform:uppercase}.product-card h3{font-family:'League Spartan',sans-serif;font-size:1.35rem;margin:0}.product-meta{font-size:.85rem;color:#6b5a4d}.product-desc{font-size:.92rem;line-height:1.5;color:#5b4d42;flex:1}.product-bottom{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:8px;flex-wrap:wrap}.product-price{font-family:'League Spartan',sans-serif;font-size:1.5rem;color:#a33d20}.add-btn,.quote-product-btn{background:#2e786f;color:white;border-radius:10px;padding:10px 13px;text-decoration:none;display:inline-block}.shipping-before-payment{font-size:.82rem;line-height:1.45;background:#f2dfbf;border-left:4px solid #a33d20;padding:9px 10px;border-radius:7px;color:#4f392a}.empty-store{grid-column:1/-1;background:#efe1c7;border:3px dashed #8a6d50;border-radius:18px;padding:36px;text-align:center;line-height:1.6}.cart-drawer{position:fixed;top:0;right:-430px;width:min(92vw,410px);height:100vh;background:#fff8ea;z-index:9999;box-shadow:-8px 0 30px rgba(0,0,0,.2);transition:right .25s ease;display:flex;flex-direction:column}.cart-drawer.open{right:0}.cart-head{padding:20px;border-bottom:3px solid #315f59;display:flex;justify-content:space-between;align-items:center}.cart-head h2{font-family:'League Spartan',sans-serif;margin:0}.cart-close{border:0;background:transparent;font-size:1.8rem;cursor:pointer}.cart-items{padding:16px;overflow:auto;flex:1}.cart-item{padding:12px 0;border-bottom:1px solid #d7c3a6}.cart-line{display:flex;justify-content:space-between;gap:10px}.remove-btn{background:transparent;color:#a33d20;padding:3px 0}.cart-footer{padding:18px;border-top:3px solid #315f59}.cart-total{font-family:'League Spartan',sans-serif;font-size:1.35rem;display:flex;justify-content:space-between;margin-bottom:12px}.checkout-btn{width:100%;background:#a33d20;color:white;border-radius:12px;padding:13px}.checkout-btn[disabled]{opacity:.5;cursor:not-allowed}.cart-note{font-size:.78rem;line-height:1.4;color:#6b5a4d;margin-top:10px}.nav-cart-count{background:#a33d20;color:white;border-radius:999px;padding:2px 7px;font-size:.72rem;margin-left:4px}.category-card[role="link"]{cursor:pointer}.category-card[role="link"]:focus-visible{outline:5px solid #2e786f;outline-offset:5px}.main-nav a.nav-active{background:#f2d9ae}
-@media(max-width:1050px){.product-grid{grid-template-columns:repeat(3,1fr)}}@media(max-width:760px){.product-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:520px){.product-grid{grid-template-columns:1fr}.store-section{padding:42px 16px}}
+.store-section{padding:58px clamp(18px,5vw,70px);background:#f7ead4;border-top:6px solid #315f59}.store-head{display:flex;justify-content:space-between;gap:20px;align-items:end;flex-wrap:wrap;margin-bottom:24px}.store-head h2{font-family:'League Spartan',sans-serif;font-size:clamp(2.4rem,5vw,4.8rem);line-height:.9;margin:0;color:#2e786f}.store-head p{max-width:620px;line-height:1.6;margin:8px 0 0}.store-toolbar{display:flex;gap:10px;flex-wrap:wrap;margin:24px 0}.filter-btn,.cart-btn,.add-btn,.checkout-btn,.remove-btn,.quote-product-btn,.detail-buy-btn,.detail-offer-btn,.offer-continue-btn{border:0;cursor:pointer;font:inherit;font-weight:800}.filter-btn{background:#e6d3b4;color:#332b24;border:2px solid #684932;border-radius:999px;padding:9px 14px}.filter-btn.active{background:#2e786f;color:#fff}.cart-btn{background:#a33d20;color:#fff1d9;border-radius:12px;padding:12px 16px}.product-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}.product-card{background:#fff7e8;border:3px solid #684932;border-radius:18px;overflow:hidden;box-shadow:0 5px 0 #c09c6c;display:flex;flex-direction:column;cursor:pointer;transition:transform .18s ease,box-shadow .18s ease}.product-card:hover,.product-card:focus-visible{transform:translateY(-3px);box-shadow:0 8px 0 #c09c6c;outline:4px solid #2e786f;outline-offset:2px}.product-image{width:100%;aspect-ratio:1/1;object-fit:cover;background:#dfcfb5}.product-info{padding:16px;display:flex;flex-direction:column;gap:8px;flex:1}.product-badge{display:inline-block;align-self:flex-start;background:#2e786f;color:white;border-radius:999px;padding:5px 9px;font-size:.72rem;font-weight:800;text-transform:uppercase}.product-card h3{font-family:'League Spartan',sans-serif;font-size:1.35rem;margin:0}.product-meta{font-size:.85rem;color:#6b5a4d}.product-desc{font-size:.92rem;line-height:1.5;color:#5b4d42;flex:1}.product-bottom{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:8px;flex-wrap:wrap}.product-price{font-family:'League Spartan',sans-serif;font-size:1.5rem;color:#a33d20}.shipping-before-payment{font-size:.82rem;line-height:1.45;background:#f2dfbf;border-left:4px solid #a33d20;padding:9px 10px;border-radius:7px;color:#4f392a}.view-details-cue{font-size:.78rem;font-weight:800;letter-spacing:.04em;color:#2e786f;text-transform:uppercase}.empty-store{grid-column:1/-1;background:#efe1c7;border:3px dashed #8a6d50;border-radius:18px;padding:36px;text-align:center;line-height:1.6}.cart-drawer{position:fixed;top:0;right:-430px;width:min(92vw,410px);height:100vh;background:#fff8ea;z-index:9999;box-shadow:-8px 0 30px rgba(0,0,0,.2);transition:right .25s ease;display:flex;flex-direction:column}.cart-drawer.open{right:0}.cart-head{padding:20px;border-bottom:3px solid #315f59;display:flex;justify-content:space-between;align-items:center}.cart-head h2{font-family:'League Spartan',sans-serif;margin:0}.cart-close{border:0;background:transparent;font-size:1.8rem;cursor:pointer}.cart-items{padding:16px;overflow:auto;flex:1}.cart-item{padding:12px 0;border-bottom:1px solid #d7c3a6}.cart-line{display:flex;justify-content:space-between;gap:10px}.remove-btn{background:transparent;color:#a33d20;padding:3px 0}.cart-footer{padding:18px;border-top:3px solid #315f59}.cart-total{font-family:'League Spartan',sans-serif;font-size:1.35rem;display:flex;justify-content:space-between;margin-bottom:12px}.checkout-btn{width:100%;background:#a33d20;color:white;border-radius:12px;padding:13px}.checkout-btn[disabled]{opacity:.5;cursor:not-allowed}.cart-note{font-size:.78rem;line-height:1.4;color:#6b5a4d;margin-top:10px}.nav-cart-count{background:#a33d20;color:white;border-radius:999px;padding:2px 7px;font-size:.72rem;margin-left:4px}.category-card[role='link']{cursor:pointer}.category-card[role='link']:focus-visible{outline:5px solid #2e786f;outline-offset:5px}.main-nav a.nav-active{background:#f2d9ae}
+.book-card:not(.book-card-empty){cursor:pointer}.book-card:not(.book-card-empty):hover,.book-card:not(.book-card-empty):focus-visible{outline:4px solid #2e786f;outline-offset:3px}.book-card:not(.book-card-empty) .book-card-body:after{content:'View full details';display:inline-block;margin-top:10px;font-size:.75rem;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#2e786f}.treasure-modal-backdrop{position:fixed;inset:0;background:rgba(31,24,19,.72);z-index:10000;display:none;align-items:center;justify-content:center;padding:18px}.treasure-modal-backdrop.open{display:flex}.treasure-modal{width:min(980px,96vw);max-height:92vh;overflow:auto;background:#fff8ea;border:4px solid #684932;border-radius:20px;box-shadow:0 24px 70px rgba(0,0,0,.35);position:relative}.treasure-modal-close{position:absolute;right:12px;top:10px;border:0;background:#fff8ea;color:#5a3825;font-size:2rem;cursor:pointer;border-radius:999px;width:44px;height:44px}.treasure-detail-grid{display:grid;grid-template-columns:minmax(280px,1fr) minmax(320px,1.1fr)}.treasure-detail-media{background:#ead9bd;display:flex;align-items:center;justify-content:center;min-height:360px}.treasure-detail-media img{width:100%;height:100%;max-height:650px;object-fit:contain}.treasure-detail-copy{padding:34px}.treasure-detail-copy h2{font-family:'League Spartan',sans-serif;font-size:clamp(1.9rem,4vw,3.2rem);line-height:1;margin:8px 0 10px}.detail-price{font-family:'League Spartan',sans-serif;font-size:2rem;color:#a33d20;margin:12px 0}.detail-description{line-height:1.65;color:#4f433a}.detail-highlights{padding-left:20px;line-height:1.55}.detail-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px}.detail-buy-btn,.detail-offer-btn,.offer-continue-btn{padding:13px 16px;border-radius:10px}.detail-buy-btn{background:#a33d20;color:#fff}.detail-offer-btn{background:#2e786f;color:#fff}.detail-contact-link{display:block;text-align:center;margin-top:12px;font-weight:800;color:#684932}.offer-box{display:none;background:#f1dfc1;padding:14px;border-radius:12px;margin-top:14px}.offer-box.open{display:block}.offer-box label{display:block;font-weight:800;margin-bottom:5px}.offer-box input{width:100%;padding:11px;border:2px solid #9d8063;border-radius:8px;font:inherit;box-sizing:border-box}.offer-continue-btn{width:100%;margin-top:9px;background:#2e786f;color:#fff}.detail-note{background:#f2dfbf;border-left:4px solid #a33d20;padding:10px 12px;border-radius:8px;font-size:.88rem;line-height:1.5}.contact-shortcut{margin-top:26px;padding:18px;background:#efe1c7;border:2px solid #8a6d50;border-radius:14px;text-align:center}.contact-shortcut strong{display:block;font-size:1.05rem;margin-bottom:5px}
+@media(max-width:1050px){.product-grid{grid-template-columns:repeat(3,1fr)}}@media(max-width:760px){.product-grid{grid-template-columns:repeat(2,1fr)}.treasure-detail-grid{grid-template-columns:1fr}.treasure-detail-media{min-height:260px}.detail-actions{grid-template-columns:1fr}}@media(max-width:520px){.product-grid{grid-template-columns:1fr}.store-section{padding:42px 16px}.treasure-detail-copy{padding:24px 18px}}
 `;
 document.head.appendChild(storeStyles);
 
@@ -62,33 +66,21 @@ const main = document.querySelector('main');
 const store = document.createElement('section');
 store.className = 'store-section';
 store.id = 'shop';
-store.innerHTML = `
-  <div class="store-head">
-    <div>
-      <p class="mini-label">THE TREASURE PILE</p>
-      <h2>Shop the Finds</h2>
-      <p>One-of-a-kind and secondhand items will appear here as they are added. Most treasures are quantity one, so when they're gone, they're gone.</p>
-    </div>
-    <button class="cart-btn" id="open-cart">Cart <span class="nav-cart-count" id="cart-count">0</span></button>
-  </div>
-  <div class="store-toolbar" id="store-toolbar"></div>
-  <div class="product-grid" id="product-grid"></div>
-`;
+store.innerHTML = `<div class="store-head"><div><p class="mini-label">THE TREASURE PILE</p><h2>Shop the Finds</h2><p>Click any treasure to see its full story, condition details, shipping information and purchase options.</p></div><button class="cart-btn" id="open-cart">Cart <span class="nav-cart-count" id="cart-count">0</span></button></div><div class="store-toolbar" id="store-toolbar"></div><div class="product-grid" id="product-grid"></div>`;
 main.insertBefore(store, document.getElementById('eighties'));
 
 const cartDrawer = document.createElement('aside');
 cartDrawer.className = 'cart-drawer';
 cartDrawer.id = 'cart-drawer';
 cartDrawer.setAttribute('aria-label','Shopping cart');
-cartDrawer.innerHTML = `
-  <div class="cart-head"><h2>Your Treasure Cart</h2><button class="cart-close" id="cart-close" aria-label="Close cart">×</button></div>
-  <div class="cart-items" id="cart-items"></div>
-  <div class="cart-footer">
-    <div class="cart-total"><span>Item Total</span><span id="cart-total">$0.00</span></div>
-    <button class="checkout-btn" id="checkout-btn" disabled>Checkout Coming Next</button>
-    <p class="cart-note"><strong>Shipping is not included in listed prices.</strong> Shipping costs will be calculated separately. Stripe checkout will be connected next.</p>
-  </div>`;
+cartDrawer.innerHTML = `<div class="cart-head"><h2>Your Treasure Cart</h2><button class="cart-close" id="cart-close" aria-label="Close cart">×</button></div><div class="cart-items" id="cart-items"></div><div class="cart-footer"><div class="cart-total"><span>Item Total</span><span id="cart-total">$0.00</span></div><button class="checkout-btn" id="checkout-btn" disabled>Shipping Quote Required</button><p class="cart-note"><strong>Shipping is confirmed before payment.</strong> Use Buy Now on an item to request your final total.</p></div>`;
 document.body.appendChild(cartDrawer);
+
+const modalBackdrop = document.createElement('div');
+modalBackdrop.className = 'treasure-modal-backdrop';
+modalBackdrop.id = 'treasure-modal-backdrop';
+modalBackdrop.innerHTML = `<section class="treasure-modal" role="dialog" aria-modal="true" aria-labelledby="treasure-modal-title"><button class="treasure-modal-close" id="treasure-modal-close" aria-label="Close item details">×</button><div id="treasure-modal-content"></div></section>`;
+document.body.appendChild(modalBackdrop);
 
 const productGrid = document.getElementById('product-grid');
 const toolbar = document.getElementById('store-toolbar');
@@ -97,175 +89,51 @@ categories.forEach(category => {
   const button = document.createElement('button');
   button.className = `filter-btn${category === activeCategory ? ' active' : ''}`;
   button.textContent = category;
-  button.addEventListener('click', () => {
-    activeCategory = category;
-    activeQuery = '';
-    if (input) input.value = '';
-    [...toolbar.children].forEach(btn => btn.classList.toggle('active', btn.textContent === category));
-    renderProducts();
-    store.scrollIntoView({behavior:'smooth',block:'start'});
-  });
+  button.addEventListener('click', () => { activeCategory = category; activeQuery = ''; if (input) input.value = ''; [...toolbar.children].forEach(btn => btn.classList.toggle('active', btn.textContent === category)); renderProducts(); store.scrollIntoView({behavior:'smooth',block:'start'}); });
   toolbar.appendChild(button);
 });
 
 function money(value){ return new Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format(value); }
-
-function filteredProducts(){
-  return PRODUCTS.filter(product => {
-    const categoryMatch = activeCategory === 'All Finds' || product.category === activeCategory;
-    const text = `${product.name} ${product.description || ''} ${product.category || ''} ${product.condition || ''} ${product.tags || ''}`.toLowerCase();
-    return categoryMatch && (!activeQuery || text.includes(activeQuery));
-  });
-}
+function filteredProducts(){ return PRODUCTS.filter(product => { const categoryMatch = activeCategory === 'All Finds' || product.category === activeCategory; const text = `${product.name} ${product.description || ''} ${product.category || ''} ${product.condition || ''} ${product.tags || ''}`.toLowerCase(); return categoryMatch && (!activeQuery || text.includes(activeQuery)); }); }
 
 function renderProducts(){
   const products = filteredProducts();
-  if (!products.length){
-    productGrid.innerHTML = `<div class="empty-store"><strong>${PRODUCTS.length ? 'No treasures match that search yet.' : 'The shelves are ready — now we just need your first treasures!'}</strong><br>${PRODUCTS.length ? 'Try another category or search.' : 'When we add your first item, its photo, price, condition, description and Add to Cart button will appear here automatically.'}</div>`;
-    return;
-  }
-  productGrid.innerHTML = products.map(product => `
-    <article class="product-card">
-      <img class="product-image" src="${product.image}" alt="${product.alt || product.name}">
-      <div class="product-info">
-        ${product.badge ? `<span class="product-badge">${product.badge}</span>` : ''}
-        <h3>${product.name}</h3>
-        <div class="product-meta">${product.category}${product.condition ? ` • Condition: ${product.condition}` : ''}</div>
-        <div class="product-desc">${product.description || ''}</div>
-        ${product.shippingQuoteOnly ? '<div class="shipping-before-payment"><strong>Payment after shipping calculation:</strong> Send your ZIP code first. We will calculate shipping and confirm the final total before any payment is collected.</div>' : ''}
-        <div class="product-bottom"><strong class="product-price">${money(product.price)} + shipping</strong>${product.shippingQuoteOnly ? `<a class="quote-product-btn" href="#shipping-quote" data-product-quote="${product.name}">Get Shipping Quote / Purchase</a>` : `<button class="add-btn" data-add="${product.id}" ${product.status === 'sold' ? 'disabled' : ''}>${product.status === 'sold' ? 'Sold' : 'Add to Cart'}</button>`}</div>
-      </div>
-    </article>`).join('');
-  productGrid.querySelectorAll('[data-add]').forEach(btn => btn.addEventListener('click', () => addToCart(btn.dataset.add)));
-  productGrid.querySelectorAll('[data-product-quote]').forEach(btn => btn.addEventListener('click', () => {
-    const select = document.getElementById('quote-book');
-    if (select) select.value = btn.dataset.productQuote;
-    setTimeout(() => { const zip = document.getElementById('quote-zip'); if (zip) zip.focus(); }, 450);
-  }));
+  if (!products.length){ productGrid.innerHTML = `<div class="empty-store"><strong>No treasures match that search yet.</strong><br>Try another category or search.</div>`; return; }
+  productGrid.innerHTML = products.map(product => `<article class="product-card" tabindex="0" role="button" aria-label="View details for ${product.name}" data-view-product="${product.id}"><img class="product-image" src="${product.image}" alt="${product.alt || product.name}"><div class="product-info">${product.badge ? `<span class="product-badge">${product.badge}</span>` : ''}<h3>${product.name}</h3><div class="product-meta">${product.category}${product.condition ? ` • Condition: ${product.condition}` : ''}</div><div class="product-desc">${product.description || ''}</div><div class="shipping-before-payment"><strong>Shipping first:</strong> We confirm your shipping total before any payment is collected.</div><div class="product-bottom"><strong class="product-price">${money(product.price)} + shipping</strong><span class="view-details-cue">View Full Details →</span></div></div></article>`).join('');
+  productGrid.querySelectorAll('[data-view-product]').forEach(card => { card.addEventListener('click', () => openProductDetails(card.dataset.viewProduct)); card.addEventListener('keydown', e => { if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); openProductDetails(card.dataset.viewProduct); }}); });
 }
 
-function selectShopCategory(category){
-  activeCategory = categories.includes(category) ? category : 'All Finds';
-  activeQuery = '';
-  if (input) input.value = '';
-  [...toolbar.children].forEach(btn => btn.classList.toggle('active', btn.textContent === activeCategory));
-  renderProducts();
-  store.scrollIntoView({behavior:'smooth',block:'start'});
+function openProductDetails(id){ const product = PRODUCTS.find(p => p.id === id); if (!product) return; openDetails({name:product.name,price:product.price,image:product.image,alt:product.alt,category:product.category,condition:product.condition,description:product.description,highlights:product.highlights || [],badge:product.badge}); }
+function openDetails(item){
+  const content = document.getElementById('treasure-modal-content');
+  content.innerHTML = `<div class="treasure-detail-grid"><div class="treasure-detail-media">${item.image ? `<img src="${item.image}" alt="${item.alt || item.name}">` : '<div style="font-size:5rem">🧳</div>'}</div><div class="treasure-detail-copy">${item.badge ? `<span class="product-badge">${item.badge}</span>` : ''}<h2 id="treasure-modal-title">${item.name}</h2>${item.category ? `<div class="product-meta">${item.category}${item.condition ? ` • Condition: ${item.condition}` : ''}</div>` : ''}${item.price ? `<div class="detail-price">${money(item.price)} <small>+ shipping</small></div>` : ''}<p class="detail-description">${item.description || 'Please contact us for additional details about this treasure.'}</p>${item.highlights && item.highlights.length ? `<h3>Why this one stands out</h3><ul class="detail-highlights">${item.highlights.map(x => `<li>${x}</li>`).join('')}</ul>` : ''}<div class="detail-note"><strong>Buy with confidence:</strong> Shipping is quoted using your ZIP code before payment. You will receive the final total before you decide to purchase.</div><div class="detail-actions"><button class="detail-buy-btn" data-detail-buy>Buy Now — Get Shipping Total</button><button class="detail-offer-btn" data-detail-offer>Make an Offer</button></div><div class="offer-box" id="offer-box"><label for="offer-amount">Your offer for this item</label><input id="offer-amount" type="number" min="1" step="0.01" placeholder="Enter your offer"><button class="offer-continue-btn" data-offer-continue>Continue With Offer</button></div><a href="#contact-us" class="detail-contact-link" data-detail-question>Questions about this treasure? Contact us</a><div class="contact-shortcut"><strong>Need more photos or details?</strong>Use the contact form below the shop. Tell us the item name and what you would like to know.</div></div></div>`;
+  modalBackdrop.classList.add('open'); document.body.style.overflow = 'hidden';
+  content.querySelector('[data-detail-buy]').addEventListener('click', () => routeToQuote(item.name,'Buy Now'));
+  content.querySelector('[data-detail-offer]').addEventListener('click', () => document.getElementById('offer-box').classList.toggle('open'));
+  content.querySelector('[data-offer-continue]').addEventListener('click', () => { const amount = document.getElementById('offer-amount').value; if(!amount) return document.getElementById('offer-amount').focus(); routeToQuote(item.name,`Make an Offer: $${Number(amount).toFixed(2)}`); });
+  content.querySelector('[data-detail-question]').addEventListener('click', () => { closeModal(); prefillContact(item.name); });
 }
+function closeModal(){ modalBackdrop.classList.remove('open'); document.body.style.overflow = ''; }
+document.getElementById('treasure-modal-close').addEventListener('click', closeModal); modalBackdrop.addEventListener('click', e => { if(e.target === modalBackdrop) closeModal(); }); document.addEventListener('keydown', e => { if(e.key === 'Escape') closeModal(); });
 
-function scrollToSection(selector){
-  const target = document.querySelector(selector);
-  if (target) target.scrollIntoView({behavior:'smooth',block:'start'});
-}
+function routeToQuote(itemName,intent){ closeModal(); const select = document.getElementById('quote-book'); if(select){ if(![...select.options].some(o => o.value === itemName)){ const option = document.createElement('option'); option.value = itemName; option.textContent = itemName; select.appendChild(option); } select.value = itemName; } const message = document.getElementById('quote-message'); if(message) message.value = `${intent}\nItem: ${itemName}\n`; document.getElementById('shipping-quote')?.scrollIntoView({behavior:'smooth',block:'start'}); setTimeout(() => document.getElementById('quote-zip')?.focus(),500); }
+function prefillContact(itemName){ const subject = document.getElementById('contact-item'); if(subject) subject.value = itemName; document.getElementById('contact-us')?.scrollIntoView({behavior:'smooth',block:'start'}); setTimeout(() => document.getElementById('contact-message')?.focus(),500); }
 
-const destinationMap = {
-  'Home': {section:'#home'},
-  'All Finds': {category:'All Finds'},
-  '80s & Retro': {section:'#eighties'},
-  'Home Decor': {section:'#home-decor'},
-  'Vintage': {category:'Vintage'},
-  'Clothing & Accessories': {category:'Clothing & Accessories'},
-  'Collectibles': {section:'#collectible-art'},
-  'Electronics': {category:'Electronics'},
-  'Antique Books': {section:'#antique-books'},
-  'Books': {section:'#books'},
-  'Specialty Books': {section:'#specialty-books'},
-  'About Us': {section:'#about'}
-};
+function enhanceStaticListings(){ document.querySelectorAll('.book-card:not(.book-card-empty)').forEach(card => { const name = card.querySelector('h3')?.textContent.trim(); if(!name) return; const priceText = card.querySelector('.price')?.textContent || ''; const match = priceText.match(/\$([0-9,.]+)/); const price = match ? Number(match[1].replace(',','')) : null; const image = card.querySelector('img')?.getAttribute('src') || ''; const alt = card.querySelector('img')?.getAttribute('alt') || name; const badge = card.querySelector('.book-badge')?.textContent.trim() || ''; const subtitle = card.querySelector('.book-subtitle')?.textContent.trim() || ''; const condition = card.querySelector('.condition')?.textContent.replace(/^Condition:\s*/i,'').trim() || ''; const paragraphs = [...card.querySelectorAll('.book-card-body > p')].filter(p => !p.classList.contains('price') && !p.classList.contains('condition') && !p.classList.contains('shipping-note') && !p.classList.contains('book-subtitle')); const description = [subtitle,...paragraphs.map(p => p.textContent.trim())].filter(Boolean).join(' '); card.setAttribute('tabindex','0'); card.setAttribute('role','button'); card.setAttribute('aria-label',`View details for ${name}`); const open = () => openDetails({name,price,image,alt,badge,condition,description,category:badge}); card.addEventListener('click', e => { if(e.target.closest('a,button')) return; open(); }); card.addEventListener('keydown', e => { if(e.key === 'Enter' || e.key === ' '){e.preventDefault();open();} }); }); }
 
-function activateDestination(label){
-  const destination = destinationMap[label];
-  if (!destination) return false;
-  if (destination.category) selectShopCategory(destination.category);
-  if (destination.section) scrollToSection(destination.section);
-  return true;
-}
+function selectShopCategory(category){ activeCategory = categories.includes(category) ? category : 'All Finds'; activeQuery=''; if(input) input.value=''; [...toolbar.children].forEach(btn => btn.classList.toggle('active', btn.textContent === activeCategory)); renderProducts(); store.scrollIntoView({behavior:'smooth',block:'start'}); }
+function scrollToSection(selector){ document.querySelector(selector)?.scrollIntoView({behavior:'smooth',block:'start'}); }
+const destinationMap = {'Home':{section:'#home'},'All Finds':{category:'All Finds'},'80s & Retro':{section:'#eighties'},'Home Decor':{section:'#home-decor'},'Vintage':{category:'Vintage'},'Clothing & Accessories':{category:'Clothing & Accessories'},'Collectibles':{section:'#collectible-art'},'Electronics':{category:'Electronics'},'Antique Books':{section:'#antique-books'},'Books':{section:'#books'},'Specialty Books':{section:'#specialty-books'},'About Us':{section:'#about'}};
+function activateDestination(label){ const destination = destinationMap[label]; if(!destination) return false; if(destination.category) selectShopCategory(destination.category); if(destination.section) scrollToSection(destination.section); return true; }
+document.querySelectorAll('.category-card').forEach(card => { const label = card.querySelector('h3')?.textContent.trim(); if(!label || !destinationMap[label]) return; card.setAttribute('role','link'); card.setAttribute('tabindex','0'); card.setAttribute('aria-label',`Browse ${label}`); card.addEventListener('click',()=>activateDestination(label)); card.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();activateDestination(label);}}); });
+document.querySelectorAll('.main-nav a').forEach(link => { const label=link.textContent.trim(); if(!destinationMap[label]) return; link.addEventListener('click',e=>{e.preventDefault();document.querySelectorAll('.main-nav a').forEach(item=>item.classList.remove('nav-active'));link.classList.add('nav-active');activateDestination(label);}); });
 
-document.querySelectorAll('.category-card').forEach(card => {
-  const label = card.querySelector('h3')?.textContent.trim();
-  if (!label || !destinationMap[label]) return;
-  card.setAttribute('role','link');
-  card.setAttribute('tabindex','0');
-  card.setAttribute('aria-label',`Browse ${label}`);
-  card.addEventListener('click', () => activateDestination(label));
-  card.addEventListener('keydown', event => {
-    if (event.key === 'Enter' || event.key === ' ') {
-      event.preventDefault();
-      activateDestination(label);
-    }
-  });
-});
-
-document.querySelectorAll('.main-nav a').forEach(link => {
-  const label = link.textContent.trim();
-  if (!destinationMap[label]) return;
-  link.addEventListener('click', event => {
-    event.preventDefault();
-    document.querySelectorAll('.main-nav a').forEach(item => item.classList.remove('nav-active'));
-    link.classList.add('nav-active');
-    activateDestination(label);
-  });
-});
-
-function addToCart(id){
-  const product = PRODUCTS.find(item => item.id === id);
-  if (!product || product.status === 'sold' || product.shippingQuoteOnly) return;
-  if (!cart.includes(id)) cart.push(id);
-  saveCart();
-  renderCart();
-  cartDrawer.classList.add('open');
-}
-
-function saveCart(){ localStorage.setItem('ardente-shenanigans-cart', JSON.stringify(cart)); }
-
-function renderCart(){
-  const valid = cart.map(id => PRODUCTS.find(p => p.id === id)).filter(p => p && !p.shippingQuoteOnly);
-  cart = valid.map(p => p.id);
-  saveCart();
-  document.getElementById('cart-count').textContent = valid.length;
-  document.getElementById('cart-items').innerHTML = valid.length ? valid.map(p => `<div class="cart-item"><div class="cart-line"><strong>${p.name}</strong><strong>${money(p.price)}</strong></div><button class="remove-btn" data-remove="${p.id}">Remove</button></div>`).join('') : '<p>Your cart is empty. Go find something wonderfully unnecessary.</p>';
-  document.getElementById('cart-total').textContent = money(valid.reduce((sum,p) => sum + p.price,0));
-  document.querySelectorAll('[data-remove]').forEach(btn => btn.addEventListener('click', () => { cart = cart.filter(id => id !== btn.dataset.remove); renderCart(); }));
-}
-
-function setupShippingQuoteItems(){
-  const select = document.getElementById('quote-book');
-  if (!select) return;
-  const label = document.querySelector('label[for="quote-book"]');
-  if (label) label.textContent = 'Item or Set';
-  if (select.options.length && select.options[0].value === '') select.options[0].textContent = 'Choose an item...';
-  PRODUCTS.filter(p => p.shippingQuoteOnly).forEach(product => {
-    if (![...select.options].some(option => option.value === product.name)) {
-      const option = document.createElement('option');
-      option.value = product.name;
-      option.textContent = product.name;
-      select.appendChild(option);
-    }
-  });
-  const quoteCopy = document.querySelector('.shipping-quote-copy');
-  if (quoteCopy) {
-    const paragraph = quoteCopy.querySelector('p:nth-of-type(2)');
-    if (paragraph) paragraph.textContent = 'Tell us which item you want and where it is going. We will calculate the shipping cost for your ZIP code and send you the final total before you pay. Your request does not obligate you to purchase.';
-  }
-}
-
+function addToCart(id){ const product=PRODUCTS.find(item=>item.id===id); if(!product||product.status==='sold'||product.shippingQuoteOnly)return;if(!cart.includes(id))cart.push(id);saveCart();renderCart();cartDrawer.classList.add('open'); }
+function saveCart(){localStorage.setItem('ardente-shenanigans-cart',JSON.stringify(cart));}
+function renderCart(){ const valid=cart.map(id=>PRODUCTS.find(p=>p.id===id)).filter(Boolean);cart=valid.map(p=>p.id);saveCart();document.getElementById('cart-count').textContent=valid.length;document.getElementById('cart-items').innerHTML=valid.length?valid.map(p=>`<div class="cart-item"><div class="cart-line"><strong>${p.name}</strong><strong>${money(p.price)}</strong></div><button class="remove-btn" data-remove="${p.id}">Remove</button></div>`).join(''):'<p>Your cart is empty. Go find something wonderfully unnecessary.</p>';document.getElementById('cart-total').textContent=money(valid.reduce((sum,p)=>sum+p.price,0));document.querySelectorAll('[data-remove]').forEach(btn=>btn.addEventListener('click',()=>{cart=cart.filter(id=>id!==btn.dataset.remove);renderCart();})); }
+function setupShippingQuoteItems(){ const select=document.getElementById('quote-book');if(!select)return;const label=document.querySelector('label[for="quote-book"]');if(label)label.textContent='Item or Set';if(select.options.length&&select.options[0].value==='')select.options[0].textContent='Choose an item...';PRODUCTS.forEach(product=>{if(![...select.options].some(option=>option.value===product.name)){const option=document.createElement('option');option.value=product.name;option.textContent=product.name;select.appendChild(option);}});const quoteCopy=document.querySelector('.shipping-quote-copy');if(quoteCopy){const paragraph=quoteCopy.querySelector('p:nth-of-type(2)');if(paragraph)paragraph.textContent='Tell us which item you want and where it is going. We will calculate shipping for your ZIP code and send the final total before payment. You may also use this form to make an offer.';} }
 setupShippingQuoteItems();
-
-document.getElementById('open-cart').addEventListener('click', () => cartDrawer.classList.add('open'));
-document.getElementById('cart-close').addEventListener('click', () => cartDrawer.classList.remove('open'));
-
-form.addEventListener('submit', event => {
-  event.preventDefault();
-  activeQuery = input.value.trim().toLowerCase();
-  activeCategory = 'All Finds';
-  [...toolbar.children].forEach(btn => btn.classList.toggle('active', btn.textContent === 'All Finds'));
-  renderProducts();
-  store.scrollIntoView({behavior:'smooth',block:'start'});
-});
-
-input.addEventListener('search', () => {
-  if (!input.value){ activeQuery = ''; renderProducts(); }
-});
-
-renderProducts();
-renderCart();
+document.getElementById('open-cart').addEventListener('click',()=>cartDrawer.classList.add('open'));document.getElementById('cart-close').addEventListener('click',()=>cartDrawer.classList.remove('open'));
+if(form) form.addEventListener('submit',event=>{event.preventDefault();activeQuery=input.value.trim().toLowerCase();activeCategory='All Finds';[...toolbar.children].forEach(btn=>btn.classList.toggle('active',btn.textContent==='All Finds'));renderProducts();store.scrollIntoView({behavior:'smooth',block:'start'});});
+if(input) input.addEventListener('search',()=>{if(!input.value){activeQuery='';renderProducts();}});
+renderProducts();renderCart();enhanceStaticListings();
