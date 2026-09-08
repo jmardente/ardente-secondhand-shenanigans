@@ -16,3 +16,20 @@ fetch('script-main.js').then(function(r){return r.text();}).then(function(code){
   code = code.replace('const PRODUCTS = [', 'const PRODUCTS = [' + newProduct);
   (0,eval)(code);
 }).catch(function(err){console.error('Store script could not load',err);});
+
+// Send the main Books navigation directly to the full searchable library.
+document.addEventListener('DOMContentLoaded', function(){
+  document.querySelectorAll('a[href="#books"]').forEach(function(link){
+    link.setAttribute('href','books.html');
+  });
+  document.querySelectorAll('.category-card').forEach(function(card){
+    var heading = card.querySelector('h3');
+    if (heading && heading.textContent.trim() === 'Books') {
+      card.setAttribute('role','link');
+      card.setAttribute('tabindex','0');
+      card.style.cursor='pointer';
+      card.addEventListener('click',function(){window.location.href='books.html';});
+      card.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();window.location.href='books.html';}});
+    }
+  });
+});
