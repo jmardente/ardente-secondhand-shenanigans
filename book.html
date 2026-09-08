@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <title>Used Book | Ardente Secondhand Shenanigans</title>
+  <meta name="description" content="Shop this pre-loved book from Ardente Secondhand Shenanigans.">
+  <link rel="stylesheet" href="styles.css">
+  <link id="canonical" rel="canonical" href="https://ardentesecondhandshop.com/book.html">
+  <style>
+    body{background:#f8ebd7;color:#3f342c}.book-page{max-width:1050px;margin:auto;padding:34px 20px 70px}.book-back{display:inline-block;margin-bottom:24px;color:#2f766e;font-weight:800}.book-detail{display:grid;grid-template-columns:minmax(250px,380px) 1fr;gap:42px;align-items:start}.book-image{background:#fff8e9;border:3px solid #684932;border-radius:18px;overflow:hidden;min-height:430px;display:grid;place-items:center}.book-image img{width:100%;height:auto;display:block}.book-placeholder{font-size:5rem;text-align:center}.book-placeholder span{display:block;font-size:.8rem;font-weight:800}.book-info h1{font-family:'League Spartan',sans-serif;font-size:clamp(2.4rem,5vw,4.5rem);line-height:.95;margin:8px 0}.book-author{font-size:1.25rem;font-weight:800;color:#80513a}.book-price{font-size:2.2rem;font-weight:900;color:#a33d20}.book-meta{line-height:1.8}.book-status{display:inline-block;background:#2f766e;color:white;border-radius:999px;padding:7px 12px;font-weight:800}.book-status.sold{background:#777}.book-request{display:inline-block;background:#a33d20;color:white;text-decoration:none;font-weight:900;padding:13px 20px;border-radius:10px;margin-top:12px}.book-request.sold{background:#777;pointer-events:none}.book-note{margin-top:24px;padding:18px;background:#fff8e9;border:2px solid #c09c6c;border-radius:14px}@media(max-width:720px){.book-detail{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <main class="book-page">
+    <a class="book-back" href="books.html">← Back to the Book Library</a>
+    <div id="book-detail"><p>Loading book...</p></div>
+  </main>
+<script>
+function esc(v){return String(v||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function parseCSV(text){const rows=[];let row=[],field='',q=false;for(let i=0;i<text.length;i++){const c=text[i],n=text[i+1];if(c==='"'&&q&&n==='"'){field+='"';i++;continue}if(c==='"'){q=!q;continue}if(c===','&&!q){row.push(field);field='';continue}if((c==='\n'||c==='\r')&&!q){if(c==='\r'&&n==='\n')i++;row.push(field);field='';if(row.some(v=>v.trim()))rows.push(row);row=[];continue}field+=c}if(field||row.length){row.push(field);if(row.some(v=>v.trim()))rows.push(row)}if(rows.length<2)return[];const h=rows[0].map(x=>x.trim());return rows.slice(1).map(r=>{const o={};h.forEach((x,i)=>o[x]=(r[i]||'').trim());return o}).filter(o=>o.title)}
+const id=new URLSearchParams(location.search).get('id');
+fetch('books.csv',{cache:'no-store'}).then(r=>r.text()).then(t=>{const b=parseCSV(t).find(x=>x.id===id);if(!b){document.title='Book Not Found | Ardente Secondhand Shenanigans';document.getElementById('book-detail').innerHTML='<h1>Book not found</h1><p>This book may have been removed from inventory.</p>';return}
+ const sold=(b.status||'available').toLowerCase()!=='available';const url=`https://ardentesecondhandshop.com/book.html?id=${encodeURIComponent(b.id)}`;const desc=`${b.title}${b.author?' by '+b.author:''}. Pre-loved ${b.format||'book'} in ${b.condition||'used'} condition${b.price?' for $'+Number(b.price).toFixed(2):''}. Shop Ardente Secondhand Shenanigans.`;
+ document.title=`${b.title}${b.author?' by '+b.author:''} – Used Book | Ardente Secondhand`;
+ document.querySelector('meta[name="description"]').content=desc;document.getElementById('canonical').href=url;
+ const img=b.image?`<img src="${esc(b.image)}" alt="${esc(b.title)}${b.author?' by '+esc(b.author):''}">`:'<div class="book-placeholder">📚<span>PRE-LOVED BOOK</span></div>';
+ document.getElementById('book-detail').innerHTML=`<article class="book-detail"><div class="book-image">${img}</div><section class="book-info"><span class="book-status ${sold?'sold':''}">${sold?'Sold':'Available'}</span><h1>${esc(b.title)}</h1><p class="book-author">${b.author?'by '+esc(b.author):'Author not listed'}</p><p class="book-price">${b.price?'$'+Number(b.price).toFixed(2):'Price coming soon'}</p><div class="book-meta"><strong>Genre:</strong> ${esc(b.genre||'Not listed')}<br><strong>Format:</strong> ${esc(b.format||'Not listed')}<br><strong>Condition:</strong> ${esc(b.condition||'Used')} ${b.isbn?'<br><strong>ISBN:</strong> '+esc(b.isbn):''}</div>${b.notes?'<div class="book-note">'+esc(b.notes)+'</div>':''}<a class="book-request ${sold?'sold':''}" href="books.html?book=${encodeURIComponent(b.title)}#book-order">${sold?'Sold':'Request This Book'}</a></section></article>`;
+ const schema={"@context":"https://schema.org/","@type":"Product",name:b.title,description:desc,sku:b.id,itemCondition:"https://schema.org/UsedCondition",offers:{"@type":"Offer",url:url,priceCurrency:"USD",availability:sold?"https://schema.org/OutOfStock":"https://schema.org/InStock",itemCondition:"https://schema.org/UsedCondition"}};if(b.author)schema.brand={"@type":"Brand",name:b.author};if(b.image)schema.image=[new URL(b.image,location.origin).href];if(b.isbn)schema.isbn=b.isbn;if(b.price)schema.offers.price=Number(b.price).toFixed(2);const s=document.createElement('script');s.type='application/ld+json';s.textContent=JSON.stringify(schema);document.head.appendChild(s);
+}).catch(()=>document.getElementById('book-detail').innerHTML='<h1>Book temporarily unavailable</h1>');
+</script>
+</body>
+</html>
