@@ -1,4 +1,5 @@
 [build]
+  command = "node generate-books.js"
   publish = "."
 
 [[headers]]
