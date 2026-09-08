@@ -1,1 +1,1 @@
-id,title,author,genre,format,condition,price,status,image,notes
+id,title,author,genre,format,condition,price,status,image,notes,item_weight_oz,package_weight_oz,package_length_in,package_width_in,package_height_in,shipping_class,local_pickup,isbn,date_added
