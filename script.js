@@ -29,6 +29,7 @@ fetch('script-main.js').then(function(r){return r.text();}).then(function(code){
   },`;
   code = code.replace('const PRODUCTS = [', 'const PRODUCTS = [' + newProducts);
   code = code.replace("const categories = ['All Finds','80s & Retro','Vintage','Home Decor','Collectibles','Clothing & Accessories','Electronics'];", "const categories = ['All Finds','80s & Retro','Vintage','Home Decor','Collectibles','Clothing & Accessories','Electronics','Computer Stuff','Misc'];");
+  code = code.split('ardente3@cox.net').join('apardente@outlook.com');
   (0,eval)(code);
 }).catch(function(err){console.error('Store script could not load',err);});
 
