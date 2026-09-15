@@ -47,4 +47,22 @@ document.addEventListener('DOMContentLoaded', function(){
       card.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();window.location.href='books.html';}});
     }
   });
+
+  // Public customer point of contact for Ardente Secondhand Shenanigans.
+  var contactEmail = 'apardente@outlook.com';
+  var footer = document.querySelector('footer');
+  if (footer && !footer.querySelector('[data-contact-email]')) {
+    var contact = document.createElement('span');
+    contact.setAttribute('data-contact-email','true');
+    contact.innerHTML = 'Point of Contact: <a href="mailto:' + contactEmail + '" style="color:inherit;font-weight:700">' + contactEmail + '</a>';
+    footer.appendChild(contact);
+  }
+
+  var about = document.getElementById('about');
+  if (about && !about.querySelector('[data-contact-email]')) {
+    var aboutContact = document.createElement('p');
+    aboutContact.setAttribute('data-contact-email','true');
+    aboutContact.innerHTML = '<strong>Questions or purchase inquiries?</strong> Email <a href="mailto:' + contactEmail + '">' + contactEmail + '</a>.';
+    about.appendChild(aboutContact);
+  }
 });
