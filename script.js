@@ -14,6 +14,7 @@ fetch('script-main.js').then(function(r){return r.text();}).then(function(code){
     tags: 'political humor sign metal sign liberal conservative satire funny garage man cave workshop vintage decor collectible tongue in cheek'
   },`;
   code = code.replace('const PRODUCTS = [', 'const PRODUCTS = [' + newProduct);
+  code = code.replace("const categories = ['All Finds','80s & Retro','Vintage','Home Decor','Collectibles','Clothing & Accessories','Electronics'];", "const categories = ['All Finds','80s & Retro','Vintage','Home Decor','Collectibles','Clothing & Accessories','Electronics','Computer Stuff','Misc'];");
   (0,eval)(code);
 }).catch(function(err){console.error('Store script could not load',err);});
 
