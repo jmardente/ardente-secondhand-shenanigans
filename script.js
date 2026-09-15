@@ -2,15 +2,15 @@ fetch('script-main.js').then(function(r){return r.text();}).then(function(code){
   var newProducts = `{
     id: 'toshiba-tk05-toner-3-pack',
     name: 'Toshiba Fax Toner Cartridge TK05 — Black — 3 Pack',
-    price: 19.50,
-    image: 'assets/file_00000000d4ec81fdb1231075a81276b3.png',
+    price: 19.99,
+    image: 'assets/toshiba.fax.toner.png',
     alt: 'Toshiba TK05 black fax toner cartridge three-pack sales image',
-    description: 'New Toshiba Fax Toner Cartridge TK05 in black, product number 01083970. Sold as a 3-pack for $19.50 plus shipping. Boxed weight is approximately 2 lb 4 oz.',
+    description: 'New Toshiba Fax Toner Cartridge TK05 in black, product number 01083970. Sold as a 3-pack for $19.99 plus shipping. Boxed weight is approximately 2 lb 4 oz.',
     category: 'Computer Stuff',
     condition: 'New',
     badge: '3 Pack',
     status: 'available',
-    highlights: ['Genuine Toshiba TK05 fax toner cartridges','Black toner','New condition','3 cartridges included','Product number 01083970','Boxed weight: 2 lb 4 oz','Price: $19.50 plus shipping'],
+    highlights: ['Genuine Toshiba TK05 fax toner cartridges','Black toner','New condition','3 cartridges included','Product number 01083970','Boxed weight: 2 lb 4 oz','Price: $19.99 plus shipping'],
     tags: 'Toshiba fax toner cartridge TK05 TK-05 black 01083970 toner printer fax office computer supplies 3 pack new'
   },
   {
