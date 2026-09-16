@@ -2,6 +2,7 @@ const Stripe = require('stripe');
 
 const CATALOG = new Map([
   ['cobalt-blue-art-glass-candle-holders', { name: 'Cobalt Blue Art Glass Candle Holders — Set of 3', price: 34.99 }],
+  ['philips-wired-over-ear-headphones', { name: 'Philips Wired Over-Ear Headphones', price: 16.50 }],
   ['toshiba-tk05-toner-3-pack', { name: 'Toshiba Fax Toner Cartridge TK05 — Black — 3 Pack', price: 19.99 }],
   ['tolerant-liberal-metal-sign', { name: '“I’m a Tolerant Liberal!” Political Humor Metal Sign', price: 9.99 }],
   ['farm-market-rooster-15-inch', { name: 'Farm Market Rooster — 15-Inch Figurine', price: 69.99 }],
