@@ -1,5 +1,19 @@
 fetch('script-main.js').then(function(r){return r.text();}).then(function(code){
   var newProducts = `{
+    id: 'philips-wired-over-ear-headphones',
+    name: 'Philips Wired Over-Ear Headphones',
+    price: 16.50,
+    image: 'assets/file_00000000302c81fd84fb33f35b59f337.png',
+    alt: 'Black Philips wired over-ear headphones sales image',
+    description: 'Pre-owned Philips wired over-ear headphones in black with attached audio cable. Includes the plug and adapter shown in the listing photo. Item weight is 9 oz without packaging.',
+    category: 'Electronics',
+    condition: 'Pre-owned — see photos',
+    badge: 'Philips',
+    status: 'available',
+    highlights: ['Philips wired over-ear headphones','Black finish','Attached audio cable','Plug and adapter shown in listing photo','Weight: 9 oz without packaging','Price: $16.50 plus shipping'],
+    tags: 'Philips wired headphones over ear stereo audio black electronics 3.5mm quarter inch adapter headset'
+  },
+  {
     id: 'toshiba-tk05-toner-3-pack',
     name: 'Toshiba Fax Toner Cartridge TK05 — Black — 3 Pack',
     price: 19.99,
@@ -101,7 +115,7 @@ openExistingCard = function(card,index){
   const quoteOnly=!!(product && product.shippingQuoteOnly);
   const note=product ? secondhandShippingCopy(product) : '<strong>Shipping:</strong> Contact us and we will help with the best shipping option.';
   const primaryLabel=quoteOnly ? 'Request Shipping Quote' : (product ? 'Add to Cart — Secure Checkout' : 'Contact Us to Purchase');
-  document.getElementById('treasure-modal-content').innerHTML='<div class="treasure-detail-grid"><div class="treasure-detail-media">'+(image?'<img src="'+image.src+'" alt="'+(image.alt||title)+'">':'<div style="font-size:6rem">📦</div>')+'</div><div class="treasure-detail-copy"><span class="product-badge">'+badge+'</span><h2 id="treasure-modal-title">'+title+'</h2>'+(subtitle?'<p class="product-meta">'+subtitle+'</p>':'')+'<div class="detail-price">'+priceText+'</div><p class="detail-description">'+description+'</p><p class="detail-description"><strong>Condition:</strong> '+condition.replace(/<strong>Condition:<\\/strong>/i,'')+'</p><div class="detail-note">'+note+'</div><div class="detail-actions"><button class="detail-buy-btn" id="static-primary-btn">'+primaryLabel+'</button><button class="detail-offer-btn" id="static-offer-btn">Make an Offer</button></div><div class="offer-box" id="static-offer-box"><label for="static-offer-amount">Your offer (before shipping)</label><input id="static-offer-amount" type="number" min="1" step="0.01" placeholder="Enter your offer"><button class="offer-continue-btn" data-static-offer="'+title+'">Continue with Offer</button></div><div class="contact-shortcut"><strong>Have a question?</strong>Email <a href="mailto:'+CONTACT_EMAIL+'?subject='+encodeURIComponent('Question about '+title)+'">'+CONTACT_EMAIL+'</a>. We are happy to answer questions or send more photos.</div></div></div>';
+  document.getElementById('treasure-modal-content').innerHTML='<div class="treasure-detail-grid"><div class="treasure-detail-media">'+(image?'<img src="'+image.src+'" alt="'+(image.alt||title)+'">':'<div style="font-size:6rem">📦</div>')+'</div><div class="treasure-detail-copy"><span class="product-badge">'+badge+'</span><h2 id="treasure-modal-title">'+title+'</h2>'+(subtitle?'<p class="product-meta">'+subtitle+'</p>':'')+'<div class="detail-price">'+priceText+'</div><p class="detail-description">'+description+'</p><p class="detail-description"><strong>Condition:</strong> '+condition.replace(/<strong>Condition:<\/strong>/i,'')+'</p><div class="detail-note">'+note+'</div><div class="detail-actions"><button class="detail-buy-btn" id="static-primary-btn">'+primaryLabel+'</button><button class="detail-offer-btn" id="static-offer-btn">Make an Offer</button></div><div class="offer-box" id="static-offer-box"><label for="static-offer-amount">Your offer (before shipping)</label><input id="static-offer-amount" type="number" min="1" step="0.01" placeholder="Enter your offer"><button class="offer-continue-btn" data-static-offer="'+title+'">Continue with Offer</button></div><div class="contact-shortcut"><strong>Have a question?</strong>Email <a href="mailto:'+CONTACT_EMAIL+'?subject='+encodeURIComponent('Question about '+title)+'">'+CONTACT_EMAIL+'</a>. We are happy to answer questions or send more photos.</div></div></div>';
   modalBackdrop.classList.add('open');document.body.style.overflow='hidden';
   document.getElementById('static-primary-btn').addEventListener('click',function(){
     if(!product){window.location.href='mailto:'+CONTACT_EMAIL+'?subject='+encodeURIComponent('Purchase question about '+title);return;}
