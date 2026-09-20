@@ -1,5 +1,20 @@
 const PRODUCTS = [
   {
+    id: 'hjc-full-face-motorcycle-helmet-medium',
+    name: 'HJC Full-Face Motorcycle Helmet — Size Medium',
+    price: 153.50,
+    image: 'assets/file_000000005e6481fdbf59d64416feac72.png',
+    alt: 'White HJC full-face motorcycle helmet, size Medium, shown from multiple angles',
+    description: 'White HJC full-face motorcycle helmet in size Medium with clear visor, interior padding, ventilation and chin bar. Pre-owned in great condition. Item weight is approximately 3 lb 12 oz. Because this is pre-owned safety equipment, please review the photos carefully and verify fit and suitability before use.',
+    category: 'Clothing & Accessories',
+    condition: 'Great pre-owned condition',
+    badge: 'Motorcycle Gear',
+    status: 'available',
+    shippingQuoteOnly: true,
+    highlights: ['HJC full-face motorcycle helmet','Size Medium (M)','White shell with clear visor','Approx. weight: 3 lb 12 oz','Pre-owned in great condition','Please review photos carefully and verify fit and suitability before use'],
+    tags: 'HJC helmet motorcycle full face riding gear biker white medium M visor protective gear motorsports'
+  },
+  {
     id: 'cobalt-blue-art-glass-candle-holders',
     name: 'Cobalt Blue Art Glass Candle Holders — Set of 3',
     price: 34.99,
