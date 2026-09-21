@@ -41,35 +41,5 @@
     <section class="eighties searchable" id="eighties" data-search="80s eighties retro"><div><p class="mini-label">TOTALLY RAD TREASURES</p><h2>A Little Love for the 80s</h2><p>If it has big-hair energy, neon attitude, cassette-tape nostalgia or gloriously questionable 1980s style, it belongs in the shenanigans.</p></div><div class="eighties-icons" aria-hidden="true">📼 &nbsp; 📻 &nbsp; 🕹️ &nbsp; 💿</div></section>
     <section class="about searchable" id="about" data-search="about family secondhand reuse second chances Ardente"><p class="mini-label">WHY THIS EXISTS</p><h2>Less clutter. More second chances.</h2><p>Ardente Secondhand Shenanigans is being created as a fun, family-run place for used items that still have plenty of life left in them. Inventory will change as things are found, listed and passed along to their next owner.</p></section>
   </main>
-  <footer><strong>ARDENTE SECONDHAND SHENANIGANS</strong><span>Secondhand finds. Family humor. New adventures.</span><span>New treasures added often</span></footer><script src="script.js?v=electronics-page-20260920"></script><script>document.querySelectorAll('[data-quote-book]').forEach(function(button){button.addEventListener('click',function(){var select=document.getElementById('quote-book');if(select)select.value=button.getAttribute('data-quote-book');setTimeout(function(){var zip=document.getElementById('quote-zip');if(zip)zip.focus();},450);});});if(new URLSearchParams(window.location.search).get('quote')==='sent'){var form=document.querySelector('.shipping-quote-form');if(form)form.insertAdjacentHTML('afterbegin','<div class="quote-success"><strong>Quote request sent!</strong><br>We received your request and will calculate the shipping total before payment.</div>');}</script>
-<script>
-/* INLINE_ELECTRONICS_NAV_FIX */
-(function(){
-  function showElectronics(){
-    var toolbar=document.getElementById('store-toolbar');
-    var shop=document.getElementById('shop');
-    if(!toolbar||!shop)return false;
-    var buttons=toolbar.querySelectorAll('.filter-btn');
-    for(var i=0;i<buttons.length;i++){
-      if(buttons[i].textContent.trim()==='Electronics'){
-        buttons[i].click();
-        shop.scrollIntoView({behavior:'smooth',block:'start'});
-        return true;
-      }
-    }
-    return false;
-  }
-  document.addEventListener('click',function(e){
-    var target=e.target.closest&&e.target.closest('[data-shop-category="Electronics"]');
-    if(!target)return;
-    e.preventDefault();
-    e.stopImmediatePropagation();
-    if(showElectronics())return;
-    var tries=0;
-    var timer=setInterval(function(){
-      tries++;
-      if(showElectronics()||tries>=40)clearInterval(timer);
-    },50);
-  },true);
-})();
-</script></body></html>
+  <footer><strong>ARDENTE SECONDHAND SHENANIGANS</strong><span>Secondhand finds. Family humor. New adventures.</span><span>New treasures added often</span></footer><script src="script.js?v=electronics-native-link-20260920"></script><script>document.querySelectorAll('[data-quote-book]').forEach(function(button){button.addEventListener('click',function(){var select=document.getElementById('quote-book');if(select)select.value=button.getAttribute('data-quote-book');setTimeout(function(){var zip=document.getElementById('quote-zip');if(zip)zip.focus();},450);});});if(new URLSearchParams(window.location.search).get('quote')==='sent'){var form=document.querySelector('.shipping-quote-form');if(form)form.insertAdjacentHTML('afterbegin','<div class="quote-success"><strong>Quote request sent!</strong><br>We received your request and will calculate the shipping total before payment.</div>');}</script>
+</body></html>
