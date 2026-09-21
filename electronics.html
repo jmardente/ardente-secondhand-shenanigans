@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Shop electronics at Ardente Secondhand Shenanigans." />
+  <title>Electronics | Ardente Secondhand Shenanigans</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&family=League+Spartan:wght@700;800&family=Pacifico&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .electronics-page{padding:58px clamp(18px,5vw,70px);background:#f7ead4;min-height:65vh}
+    .electronics-page h1{font-family:'League Spartan',sans-serif;font-size:clamp(2.8rem,6vw,5.4rem);line-height:.9;color:#2e786f;margin:0 0 12px}
+    .electronics-page>p{max-width:760px;line-height:1.65;color:#5b4d42}
+    .electronics-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:30px}
+    .electronics-card{background:#fff8e9;border:3px solid #684932;border-radius:18px;overflow:hidden;box-shadow:0 6px 0 #c09c6c}
+    .electronics-card img{width:100%;aspect-ratio:1/1;object-fit:cover;background:#dfcfb5;border-bottom:1px solid #684932}
+    .electronics-copy{padding:20px}
+    .electronics-copy h2{font-family:'League Spartan',sans-serif;font-size:1.8rem;margin:10px 0}
+    .electronics-copy p{line-height:1.55;color:#5b4d42}
+    .electronics-price{font-family:'League Spartan',sans-serif;font-size:2rem;color:#a33d20}
+    .electronics-badge{display:inline-block;background:#2e786f;color:white;border-radius:999px;padding:6px 10px;font-size:.72rem;font-weight:800;text-transform:uppercase}
+    .electronics-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+    .electronics-actions a{display:inline-block;text-decoration:none;background:#a33d20;color:white;font-weight:800;border-radius:10px;padding:12px 14px}
+    .electronics-actions a.secondary{background:#2e786f}
+    .category-card-link{display:block;color:inherit;text-decoration:none}
+    @media(max-width:850px){.electronics-grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <div class="top-strip">★ NEW FINDS ADDED OFTEN &nbsp; ★ &nbsp; SECONDHAND FINDS. FIRST-CLASS FUN. &nbsp; ★ &nbsp; THANK YOU FOR SUPPORTING SMALL!</div>
+  <nav class="main-nav" aria-label="Primary navigation">
+    <a href="index.html#home">Home</a>
+    <a href="index.html#categories">All Finds</a>
+    <a href="index.html#eighties">80s & Retro</a>
+    <a href="index.html#categories">Vintage</a>
+    <a href="index.html#collectible-art">Collectibles</a>
+    <a href="index.html#antique-books">Antique Books</a>
+    <a href="books.html">Books</a>
+    <a href="index.html#specialty-books">Specialty Books</a>
+    <a href="electronics.html" class="nav-active">Electronics</a>
+    <a href="index.html#about">About Us</a>
+  </nav>
+  <main class="electronics-page">
+    <p class="mini-label">TECH • AUDIO • USEFUL FINDS</p>
+    <h1>Electronics</h1>
+    <p>Electronics and audio finds currently available from Ardente Secondhand Shenanigans.</p>
+
+    <div class="electronics-grid">
+      <article class="electronics-card">
+        <img src="assets/file_00000000302c81fd84fb33f35b59f337.png" alt="Black Philips wired over-ear headphones">
+        <div class="electronics-copy">
+          <span class="electronics-badge">Philips</span>
+          <h2>Philips Wired Over-Ear Headphones</h2>
+          <p>Pre-owned Philips wired over-ear headphones in black with attached audio cable. Includes the plug and adapter shown in the listing photo. Item weight is 9 oz without packaging.</p>
+          <p><strong>Condition:</strong> Pre-owned — see photos.</p>
+          <p class="electronics-price">$16.50 <small>+ shipping</small></p>
+          <div class="electronics-actions">
+            <a href="index.html#shipping-quote">Purchase / Shipping</a>
+            <a class="secondary" href="mailto:apardente@outlook.com?subject=Philips%20Wired%20Over-Ear%20Headphones">Ask a Question</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </main>
+  <footer><strong>ARDENTE SECONDHAND SHENANIGANS</strong><span>Secondhand finds. Family humor. New adventures.</span><span>Point of Contact: apardente@outlook.com</span></footer>
+</body>
+</html>
