@@ -61,6 +61,7 @@ fetch('script-main.js?v=navfix-20260920',{cache:'no-store'}).then(function(r){if
   code = code.split('ardente3@cox.net').join('apardente@outlook.com');
   // Prevent the older in-page navigation handler from hijacking the Books link.
   code = code.replace("'Books':{section:'#books'},", "");
+  code = code.replace("'Electronics':{category:'Electronics'},", "");
 
   code += `
 
@@ -252,7 +253,7 @@ document.addEventListener('click', function(e){
   }
 
   var card=e.target.closest && e.target.closest('.category-card');
-  if(!card || card.getAttribute('role')==='link') return;
+  if(!card || card.getAttribute('role')==='link' || card.tagName==='A' || card.hasAttribute('href')) return;
   var heading=card.querySelector('h3');
   var label=heading ? heading.textContent.trim() : '';
   if(label==='Books'){
@@ -279,56 +280,5 @@ document.addEventListener('click', function(e){
 
 /* NAV_FIX_BUILD_2: deploy marker so production includes the latest index cache-bust. */
 
-
-/* ELECTRONICS_NAV_DIRECT_FIX
-   Give Electronics its own explicit route instead of sharing #categories. */
-(function(){
-  function activateElectronics(){
-    var toolbar=document.getElementById('store-toolbar');
-    var shop=document.getElementById('shop');
-    if(!toolbar || !shop) return false;
-
-    var button=Array.prototype.find.call(toolbar.querySelectorAll('.filter-btn'),function(btn){
-      return btn.textContent.trim()==='Electronics';
-    });
-    if(!button) return false;
-
-    button.click();
-    shop.scrollIntoView({behavior:'smooth',block:'start'});
-    return true;
-  }
-
-  document.addEventListener('click',function(e){
-    var nav=e.target.closest && e.target.closest('[data-shop-category="Electronics"]');
-    if(nav){
-      e.preventDefault();
-      e.stopImmediatePropagation();
-      if(activateElectronics()) return;
-
-      var attempts=0;
-      var timer=setInterval(function(){
-        attempts++;
-        if(activateElectronics() || attempts>=40) clearInterval(timer);
-      },50);
-      return;
-    }
-
-    var card=e.target.closest && e.target.closest('.category-card');
-    if(card){
-      var heading=card.querySelector('h3');
-      if(heading && heading.textContent.trim()==='Electronics'){
-        e.preventDefault();
-        e.stopImmediatePropagation();
-        if(activateElectronics()) return;
-
-        var tries=0;
-        var wait=setInterval(function(){
-          tries++;
-          if(activateElectronics() || tries>=40) clearInterval(wait);
-        },50);
-      }
-    }
-  },true);
-})();
 
 /* ELECTRONICS_FIX_DEPLOY_MARKER */
