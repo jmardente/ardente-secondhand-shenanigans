@@ -1,3 +1,4 @@
+const QUOTED_PAYMENT_URL = 'https://buy.stripe.com/eVqdR1bos31ZcBj8LxcAo07';
 fetch('script-main.js').then(function(r){return r.text();}).then(function(code){
   var newProducts = `{
     id: 'philips-wired-over-ear-headphones',
@@ -69,7 +70,7 @@ function secondhandFindStaticByTitle(title){ return (window.__SECONDHAND_STATIC_
 function secondhandShippingCopy(product){
   return product && product.shippingQuoteOnly
     ? '<strong>Oversized item:</strong> Shipping is quoted before purchase so you only pay the appropriate shipping cost. Local pickup may also be available.'
-    : '<strong>Simple shipping:</strong> Standard shipping is added at secure checkout — no shipping quote needed.';
+    : '<strong>Exact-total checkout:</strong> We confirm shipping from your ZIP code first, then you pay the exact quoted total securely through Stripe.';
 }
 
 renderProducts = function(){
@@ -92,14 +93,12 @@ openProductDetails = function(product){
   const highlights = (product.highlights || []).map(function(item){return '<li>'+item+'</li>';}).join('');
   const quoteOnly = !!product.shippingQuoteOnly;
   const shippingNote = secondhandShippingCopy(product);
-  const primaryLabel = quoteOnly ? 'Request Shipping Quote' : 'Add to Cart — Secure Checkout';
-  const primaryAttr = quoteOnly ? 'data-quote-now="'+product.name+'"' : 'data-add-now="'+product.id+'"';
+  const primaryLabel = quoteOnly ? 'Request Shipping Quote' : 'Buy Now — Get Final Total';
+  const primaryAttr = 'data-quote-now="'+product.name+'"';
   document.getElementById('treasure-modal-content').innerHTML = '<div class="treasure-detail-grid"><div class="treasure-detail-media"><img src="'+product.image+'" alt="'+(product.alt || product.name)+'"></div><div class="treasure-detail-copy">'+(product.badge ? '<span class="product-badge">'+product.badge+'</span>' : '')+'<h2 id="treasure-modal-title">'+product.name+'</h2><div class="product-meta">'+product.category+' • <strong>Condition:</strong> '+(product.condition || 'See description')+'</div><div class="detail-price">'+money(product.price)+' <small>'+(quoteOnly ? '+ shipping quote' : '+ shipping')+'</small></div><p class="detail-description">'+product.description+'</p>'+(highlights ? '<h3>Item Details</h3><ul class="detail-highlights">'+highlights+'</ul>' : '')+'<div class="detail-note">'+shippingNote+'</div><div class="detail-actions"><button class="detail-buy-btn" '+primaryAttr+'>'+primaryLabel+'</button><button class="detail-offer-btn" id="detail-offer-btn">Make an Offer</button></div><div class="offer-box" id="offer-box"><label for="offer-amount">Your offer (item price before shipping)</label><input id="offer-amount" type="number" min="1" step="0.01" placeholder="Enter your offer"><button class="offer-continue-btn" data-offer-item="'+product.name+'">Continue with Offer</button></div><div class="contact-shortcut"><strong>Questions or want more photos?</strong>Email <a href="mailto:'+CONTACT_EMAIL+'?subject='+encodeURIComponent('Question about '+product.name)+'">'+CONTACT_EMAIL+'</a> and mention this item.</div></div></div>';
   modalBackdrop.classList.add('open'); document.body.style.overflow='hidden';
-  const addButton = document.querySelector('[data-add-now]');
   const quoteButton = document.querySelector('[data-quote-now]');
-  if(addButton) addButton.addEventListener('click', function(){ closeModal(); addToCart(product.id); });
-  if(quoteButton) quoteButton.addEventListener('click', function(){ beginQuote(product.name,'Oversized shipping quote request'); });
+  if(quoteButton) quoteButton.addEventListener('click', function(){ beginQuote(product.name, quoteOnly ? 'Oversized shipping quote request' : 'Purchase request — please send final total'); });
   document.getElementById('detail-offer-btn').addEventListener('click', function(){ document.getElementById('offer-box').classList.toggle('open'); document.getElementById('offer-amount').focus(); });
   document.querySelector('[data-offer-item]').addEventListener('click', function(){ const amount=document.getElementById('offer-amount').value; if(!amount||Number(amount)<=0){document.getElementById('offer-amount').focus();return;} beginQuote(product.name,'Offer: '+money(Number(amount))); });
 };
@@ -121,8 +120,7 @@ openExistingCard = function(card,index){
   modalBackdrop.classList.add('open');document.body.style.overflow='hidden';
   document.getElementById('static-primary-btn').addEventListener('click',function(){
     if(!product){window.location.href='mailto:'+CONTACT_EMAIL+'?subject='+encodeURIComponent('Purchase question about '+title);return;}
-    if(quoteOnly){beginQuote(title,'Oversized shipping quote request');return;}
-    closeModal();addToCart(product.id);
+    beginQuote(title, quoteOnly ? 'Oversized shipping quote request' : 'Purchase request — please send final total');return;
   });
   document.getElementById('static-offer-btn').addEventListener('click',function(){document.getElementById('static-offer-box').classList.toggle('open');document.getElementById('static-offer-amount').focus();});
   document.querySelector('[data-static-offer]').addEventListener('click',function(){const amount=document.getElementById('static-offer-amount').value;if(!amount||Number(amount)<=0){document.getElementById('static-offer-amount').focus();return;}beginQuote(title,'Offer: '+money(Number(amount)));});
@@ -143,31 +141,15 @@ renderCart = function(){
   document.getElementById('cart-items').innerHTML=valid.length?valid.map(function(p){return '<div class="cart-item"><div class="cart-line"><strong>'+p.name+'</strong><strong>'+money(p.price)+'</strong></div><button class="remove-btn" data-remove="'+p.id+'">Remove</button></div>';}).join(''):'<p>Your cart is empty. Go find something wonderfully unnecessary.</p>';
   document.getElementById('cart-total').textContent=money(valid.reduce(function(s,p){return s+p.price;},0));
   const checkoutButton=document.getElementById('checkout-btn');
-  if(checkoutButton){checkoutButton.disabled=valid.length===0;checkoutButton.textContent='Secure Checkout';}
+  if(checkoutButton){checkoutButton.disabled=valid.length===0;checkoutButton.textContent='Get Final Total';}
   document.querySelectorAll('[data-remove]').forEach(function(btn){btn.addEventListener('click',function(){cart=cart.filter(function(id){return id!==btn.dataset.remove;});renderCart();});});
 };
 
-async function secondhandCheckout(){
-  const status=document.getElementById('checkout-status');
-  const checkoutButton=document.getElementById('checkout-btn');
-  const items=cart.map(function(id){return {id:id,quantity:1};});
-  if(!items.length)return;
-  if(status)status.textContent='';
-  checkoutButton.disabled=true;checkoutButton.textContent='Opening secure checkout…';
-  try{
-    const response=await fetch('/.netlify/functions/create-checkout-session',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({items:items})});
-    const data=await response.json();
-    if(!response.ok||!data.url)throw new Error(data.error||'Checkout could not be started.');
-    window.location.href=data.url;
-  }catch(error){
-    const cartProducts=cart.map(function(id){return secondhandFindProduct(id);}).filter(Boolean);
-    const itemNames=cartProducts.map(function(p){return p.name;}).join(', ');
-    if(status)status.textContent='Secure checkout is temporarily unavailable. Opening the purchase request form instead.';
-    checkoutButton.disabled=false;checkoutButton.textContent='Secure Checkout';
-    if(itemNames){
-      beginQuote(itemNames,'Purchase request — secure checkout temporarily unavailable');
-    }
-  }
+function secondhandCheckout(){
+  const cartProducts=cart.map(function(id){return secondhandFindProduct(id);}).filter(Boolean);
+  const itemNames=cartProducts.map(function(p){return p.name;}).join(', ');
+  if(!itemNames)return;
+  beginQuote(itemNames,'Purchase request — please send the exact final total including shipping');
 }
 
 function secondhandApplyShippingLabels(){
@@ -185,11 +167,11 @@ function secondhandApplyShippingLabels(){
 }
 
 const storeHeadCopy=document.querySelector('.store-head p');
-if(storeHeadCopy)storeHeadCopy.innerHTML='Click any treasure to see full details and purchase options.<br><strong>Simple Shipping:</strong> Most items use standard shipping at checkout. Oversized items are clearly marked for a custom quote.';
+if(storeHeadCopy)storeHeadCopy.innerHTML='Click any treasure to see full details and purchase options.<br><strong>Exact-total checkout:</strong> We confirm shipping first, then you pay the exact quoted total securely through Stripe.';
 const contactBar=document.querySelector('.store-contact-bar p');
-if(contactBar)contactBar.innerHTML='<strong>Questions, oversized shipping quotes, or need more photos?</strong><br>Email us anytime. Most regular-size items can go straight through secure checkout.';
+if(contactBar)contactBar.innerHTML='<strong>Questions, shipping quotes, or need more photos?</strong><br>Email us anytime. We confirm your final total before payment so there are no surprise shipping charges.';
 const cartNote=document.querySelector('.cart-note');
-if(cartNote)cartNote.innerHTML='<strong>Buyer-friendly shipping:</strong> Standard shipping is added at checkout. Oversized items stay out of the cart and use a custom shipping quote instead.';
+if(cartNote)cartNote.innerHTML='<strong>Buyer-friendly shipping:</strong> Click Get Final Total and we will confirm shipping for every item before you pay.';
 const checkoutBtn=document.getElementById('checkout-btn');
 if(checkoutBtn){
   checkoutBtn.insertAdjacentHTML('afterend','<p class="cart-note" id="checkout-status" aria-live="polite"></p>');
@@ -200,6 +182,15 @@ if(quoteCopy){
   const heading=quoteCopy.querySelector('h2');if(heading)heading.textContent='Oversized Shipping & Local Pickup';
   const paras=quoteCopy.querySelectorAll('p');
   if(paras[1])paras[1].textContent='Most items now use standard shipping at checkout. Use this form for items marked Shipping Quote Required, oversized or heavy pieces, local pickup arrangements, offers, or special shipping questions.';
+}
+const quoteSection=document.getElementById('shipping-quote');
+if(quoteSection && !document.getElementById('quoted-payment-link')){
+  quoteSection.insertAdjacentHTML('beforeend','<div id="quoted-payment-link" style="grid-column:1/-1;background:#fff8ea;border:3px solid #315f59;border-radius:14px;padding:18px;text-align:center"><strong>Already received your final total?</strong><br><span>Pay that exact amount securely through Stripe.</span><br><a href="'+QUOTED_PAYMENT_URL+'" target="_blank" rel="noopener" style="display:inline-block;margin-top:12px;background:#a33d20;color:#fff;text-decoration:none;font-weight:800;padding:12px 18px;border-radius:10px">Pay Your Quoted Total</a></div>');
+}
+const pageParams=new URLSearchParams(location.search);
+if(pageParams.get('payment')==='success'){
+  const shop=document.getElementById('shop');
+  if(shop)shop.insertAdjacentHTML('afterbegin','<div style="background:#dceadf;border:2px solid #4d7556;color:#26472d;padding:12px;border-radius:10px;margin-bottom:16px"><strong>Payment received!</strong> Thank you. We will use the shipping address entered in Stripe to fulfill your order.</div>');
 }
 secondhandApplyShippingLabels();
 renderProducts();renderCart();
