@@ -58,6 +58,8 @@ fetch('script-main.js').then(function(r){return r.text();}).then(function(code){
   code = code.replace('const PRODUCTS = [', 'const PRODUCTS = [' + newProducts);
   code = code.replace("const categories = ['All Finds','80s & Retro','Vintage','Home Decor','Collectibles','Clothing & Accessories','Electronics'];", "const categories = ['All Finds','80s & Retro','Vintage','Home Decor','Collectibles','Clothing & Accessories','Electronics','Computer Stuff','Misc'];");
   code = code.split('ardente3@cox.net').join('apardente@outlook.com');
+  // Prevent the older in-page navigation handler from hijacking the Books link.
+  code = code.replace("'Books':{section:'#books'},", "");
 
   code += `
 
@@ -158,8 +160,13 @@ async function secondhandCheckout(){
     if(!response.ok||!data.url)throw new Error(data.error||'Checkout could not be started.');
     window.location.href=data.url;
   }catch(error){
-    if(status)status.textContent=error.message+' You can still request a shipping quote below.';
+    const cartProducts=cart.map(function(id){return secondhandFindProduct(id);}).filter(Boolean);
+    const itemNames=cartProducts.map(function(p){return p.name;}).join(', ');
+    if(status)status.textContent='Secure checkout is temporarily unavailable. Opening the purchase request form instead.';
     checkoutButton.disabled=false;checkoutButton.textContent='Secure Checkout';
+    if(itemNames){
+      beginQuote(itemNames,'Purchase request — secure checkout temporarily unavailable');
+    }
   }
 }
 
