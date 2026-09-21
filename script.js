@@ -1,5 +1,5 @@
 const QUOTED_PAYMENT_URL = 'https://buy.stripe.com/eVqdR1bos31ZcBj8LxcAo07';
-fetch('script-main.js').then(function(r){return r.text();}).then(function(code){
+fetch('script-main.js?v=navfix-20260920',{cache:'no-store'}).then(function(r){if(!r.ok)throw new Error('script-main.js failed to load: '+r.status);return r.text();}).then(function(code){
   var newProducts = `{
     id: 'philips-wired-over-ear-headphones',
     name: 'Philips Wired Over-Ear Headphones',
@@ -233,3 +233,46 @@ document.addEventListener('DOMContentLoaded', function(){
     about.appendChild(aboutContact);
   }
 });
+
+/* SECONDHAND_NAV_FALLBACK
+   Keeps the visible navigation usable even if the enhanced store script fails
+   or a visitor has a stale cached copy. */
+document.addEventListener('click', function(e){
+  if(e.defaultPrevented) return;
+  var link=e.target.closest && e.target.closest('.main-nav a');
+  if(link){
+    var href=link.getAttribute('href') || '';
+    if(href && !href.startsWith('#')) return;
+    var target=href ? document.querySelector(href) : null;
+    if(target){
+      e.preventDefault();
+      target.scrollIntoView({behavior:'smooth',block:'start'});
+    }
+    return;
+  }
+
+  var card=e.target.closest && e.target.closest('.category-card');
+  if(!card || card.getAttribute('role')==='link') return;
+  var heading=card.querySelector('h3');
+  var label=heading ? heading.textContent.trim() : '';
+  if(label==='Books'){
+    window.location.href='books.html';
+    return;
+  }
+  var map={
+    '80s & Retro':'#eighties',
+    'Home Decor':'#home-decor',
+    'Collectibles':'#collectible-art',
+    'Antique Books':'#antique-books',
+    'Specialty Books':'#specialty-books',
+    'Vintage':'#categories',
+    'Clothing & Accessories':'#categories',
+    'Electronics':'#categories'
+  };
+  var selector=map[label];
+  var section=selector ? document.querySelector(selector) : null;
+  if(section){
+    e.preventDefault();
+    section.scrollIntoView({behavior:'smooth',block:'start'});
+  }
+}, false);
