@@ -276,3 +276,5 @@ document.addEventListener('click', function(e){
     section.scrollIntoView({behavior:'smooth',block:'start'});
   }
 }, false);
+
+/* NAV_FIX_BUILD_2: deploy marker so production includes the latest index cache-bust. */
