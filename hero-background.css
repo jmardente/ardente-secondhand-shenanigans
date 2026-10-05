@@ -43,10 +43,6 @@
 
 .search-note { display: none; }
 
-/* Keep the old static helmet card hidden; the current $62 dynamic listing is used instead. */
-#sports-outdoors .book-card[data-search*="HJC"] {
-  display: none !important;
-}
 
 /* Antique Books: use the uploaded sale graphics as the listing images. */
 #antique-books .book-card .book-placeholder {
