@@ -1,18 +1,18 @@
 const PRODUCTS = [
   {
     id: 'hjc-full-face-motorcycle-helmet-medium',
-    name: 'HJC Full-Face Motorcycle Helmet — Size Medium',
+    name: 'HJC Full-Face Motorcycle Helmet — Size Small',
     price: 62.00,
-    image: 'assets/d81e75e4-3d9d-4dfd-b8a9-51a9d4e8333b.png',
-    alt: 'White HJC full-face motorcycle helmet, size Medium, shown from multiple angles',
-    description: 'White HJC full-face motorcycle helmet in size Medium with clear visor, interior padding, ventilation and chin bar. Pre-owned in great condition. Item weight is approximately 3 lb 12 oz. Because this is pre-owned safety equipment, please review the photos carefully and verify fit and suitability before use.',
-    category: 'Clothing & Accessories',
+    image: 'assets/hjc-helmet-small-sales.png',
+    alt: 'White HJC full-face motorcycle helmet, size Small, shown from multiple angles',
+    description: 'White HJC full-face motorcycle helmet in size Small with clear visor, interior padding, ventilation and chin bar. Pre-owned in great condition. Item weight is approximately 3 lb 12 oz. Because this is pre-owned safety equipment, please review the photos carefully and verify fit and suitability before use.',
+    category: 'Sports & Outdoors',
     condition: 'Great pre-owned condition',
     badge: 'Motorcycle Gear',
     status: 'available',
     shippingQuoteOnly: true,
-    highlights: ['HJC full-face motorcycle helmet','Size Medium (M)','White shell with clear visor','Approx. weight: 3 lb 12 oz','Pre-owned in great condition','Please review photos carefully and verify fit and suitability before use'],
-    tags: 'HJC helmet motorcycle full face riding gear biker white medium M visor protective gear motorsports'
+    highlights: ['HJC full-face motorcycle helmet','Size Small (S)','White shell with clear visor','Approx. weight: 3 lb 12 oz','Pre-owned in great condition','Please review photos carefully and verify fit and suitability before use'],
+    tags: 'HJC helmet motorcycle full face riding gear biker white small S visor protective gear motorsports'
   },
   {
     id: 'cobalt-blue-art-glass-candle-holders',
@@ -153,7 +153,7 @@ function saveCart(){localStorage.setItem('ardente-shenanigans-cart',JSON.stringi
 function renderCart(){const valid=cart.map(id=>PRODUCTS.find(p=>p.id===id)).filter(Boolean);cart=valid.map(p=>p.id);saveCart();document.getElementById('cart-count').textContent=valid.length;document.getElementById('cart-items').innerHTML=valid.length?valid.map(p=>`<div class="cart-item"><div class="cart-line"><strong>${p.name}</strong><strong>${money(p.price)}</strong></div><button class="remove-btn" data-remove="${p.id}">Remove</button></div>`).join(''):'<p>Your cart is empty. Go find something wonderfully unnecessary.</p>';document.getElementById('cart-total').textContent=money(valid.reduce((s,p)=>s+p.price,0));document.querySelectorAll('[data-remove]').forEach(btn=>btn.addEventListener('click',()=>{cart=cart.filter(id=>id!==btn.dataset.remove);renderCart();}));}
 
 const helmetStaticCard=[...document.querySelectorAll('.book-card')].find(card=>card.querySelector('h3')?.textContent.trim()==='HJC Full-Face Motorcycle Helmet');
-if(helmetStaticCard){const img=helmetStaticCard.querySelector('img');if(img)img.src='assets/d81e75e4-3d9d-4dfd-b8a9-51a9d4e8333b.png';const price=helmetStaticCard.querySelector('.price');if(price)price.innerHTML='$62.00 <small>+ shipping</small>';}
+if(helmetStaticCard){const img=helmetStaticCard.querySelector('img');if(img)img.src='assets/hjc-helmet-small-sales.png';const price=helmetStaticCard.querySelector('.price');if(price)price.innerHTML='$62.00 <small>+ shipping</small>';}
 
 setupShippingQuoteItems();enhanceExistingCards();
 document.getElementById('open-cart').addEventListener('click',()=>cartDrawer.classList.add('open'));document.getElementById('cart-close').addEventListener('click',()=>cartDrawer.classList.remove('open'));document.getElementById('treasure-modal-close').addEventListener('click',closeModal);modalBackdrop.addEventListener('click',e=>{if(e.target===modalBackdrop)closeModal();});document.addEventListener('keydown',e=>{if(e.key==='Escape'&&modalBackdrop.classList.contains('open'))closeModal();});

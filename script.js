@@ -57,7 +57,7 @@ fetch('script-main.js?v=navfix-20260920',{cache:'no-store'}).then(function(r){if
 
   code = 'window.__SECONDHAND_STATIC_PRODUCTS = ' + JSON.stringify(staticProducts) + ';\n' + code;
   code = code.replace('const PRODUCTS = [', 'const PRODUCTS = [' + newProducts);
-  code = code.replace("const categories = ['All Finds','80s & Retro','Vintage','Home Decor','Collectibles','Clothing & Accessories','Electronics'];", "const categories = ['All Finds','80s & Retro','Vintage','Home Decor','Collectibles','Clothing & Accessories','Electronics','Computer Stuff','Misc'];");
+  code = code.replace("const categories = ['All Finds','80s & Retro','Vintage','Home Decor','Collectibles','Clothing & Accessories','Electronics'];", "const categories = ['All Finds','80s & Retro','Vintage','Home Decor','Collectibles','Clothing & Accessories','Electronics','Sports & Outdoors','Computer Stuff','Misc'];");
   code = code.split('ardente3@cox.net').join('apardente@outlook.com');
   // Prevent the older in-page navigation handler from hijacking the Books link.
   code = code.replace("'Books':{section:'#books'},", "");
