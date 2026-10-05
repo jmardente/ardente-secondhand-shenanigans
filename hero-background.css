@@ -43,8 +43,7 @@
 
 .search-note { display: none; }
 
-/* Motorcycle helmet has been removed from the storefront. */
-[data-view-product="hjc-full-face-motorcycle-helmet-medium"],
+/* Keep the old static helmet card hidden; the current $62 dynamic listing is used instead. */
 #sports-outdoors .book-card[data-search*="HJC"] {
   display: none !important;
 }
