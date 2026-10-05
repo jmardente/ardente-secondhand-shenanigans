@@ -43,6 +43,12 @@
 
 .search-note { display: none; }
 
+/* Motorcycle helmet has been removed from the storefront. */
+[data-view-product="hjc-full-face-motorcycle-helmet-medium"],
+#sports-outdoors .book-card[data-search*="HJC"] {
+  display: none !important;
+}
+
 /* Antique Books: use the uploaded sale graphics as the listing images. */
 #antique-books .book-card .book-placeholder {
   min-height: 0;
