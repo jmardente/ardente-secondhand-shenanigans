@@ -1,4 +1,86 @@
+// Inline illustrative graphics ensure each cassette has a distinct, loading-safe thumbnail.
+function cassetteSaleArt(artist, song, price, background, accent, shell) {
+  const esc = value => String(value).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;');
+  const titleLines = artist === 'Right Said Fred' ? ['RIGHT SAID', 'FRED'] : [artist.toUpperCase()];
+  const title = titleLines.length === 2
+    ? '<text x="400" y="132" font-family="Arial" font-weight="900" font-size="82" text-anchor="middle" fill="#fff">'+titleLines[0]+'</text><text x="400" y="210" font-family="Arial" font-weight="900" font-size="82" text-anchor="middle" fill="#fff">'+titleLines[1]+'</text>'
+    : '<text x="400" y="172" font-family="Georgia" font-weight="bold" font-size="'+(artist==='Tim McGraw'?88:118)+'" text-anchor="middle" fill="#fff">'+esc(titleLines[0])+'</text>';
+  const svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800">'
+    +'<rect width="800" height="800" fill="'+background+'"/><rect x="0" y="0" width="800" height="68" fill="#182437"/>'
+    +'<text x="400" y="45" text-anchor="middle" fill="#fff" font-size="37" font-weight="bold" font-family="Georgia">Ardente Secondhand Shop</text>'
+    +title+'<text x="400" y="275" text-anchor="middle" fill="#fff3d2" font-size="'+(song.length>20?36:49)+'" font-weight="bold" font-family="Arial">'+esc(song)+'</text>'
+    +'<rect x="105" y="322" width="590" height="300" rx="32" fill="'+shell+'" stroke="#e2d9ca" stroke-width="9"/>'
+    +'<rect x="152" y="367" width="496" height="144" rx="8" fill="'+accent+'" opacity=".86"/><text x="400" y="410" text-anchor="middle" font-family="Arial" font-size="41" font-weight="bold" fill="white">'+esc(artist.toUpperCase())+'</text>'
+    +'<text x="400" y="456" text-anchor="middle" font-family="Arial" font-size="'+(song.length>20?22:29)+'" fill="white">'+esc(song.toUpperCase())+'</text>'
+    +'<circle cx="258" cy="548" r="44" fill="#dad5ce" stroke="#555" stroke-width="11"/><circle cx="542" cy="548" r="44" fill="#dad5ce" stroke="#555" stroke-width="11"/><circle cx="258" cy="548" r="14" fill="#746e68"/><circle cx="542" cy="548" r="14" fill="#746e68"/>'
+    +'<rect x="338" y="526" width="124" height="44" rx="7" fill="#393a3c"/>'
+    +'<rect x="34" y="654" width="340" height="91" rx="22" fill="#fff1c6"/><text x="204" y="708" text-anchor="middle" fill="#1b3434" font-size="34" font-family="Arial" font-weight="bold">TESTED &amp; WORKING</text>'
+    +'<rect x="406" y="654" width="365" height="91" rx="22" fill="#921e27"/><text x="586" y="706" text-anchor="middle" fill="white" font-size="59" font-family="Arial" font-weight="bold">$'+price+'</text><text x="588" y="735" text-anchor="middle" fill="white" font-size="22" font-family="Arial">+ SHIPPING</text></svg>';
+  return 'data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg);
+}
+
 const PRODUCTS = [
+  {
+    id: "roxette-it-must-have-been-love-cassette",
+    name: "Roxette — It Must Have Been Love / Chances (1990 Cassette Single)",
+    price: 7.99,
+    image: cassetteSaleArt("Roxette", "It Must Have Been Love / Chances", "7.99", "#2263ac", "#174873", "#1471d7"),
+    alt: "Illustrated sales image for Roxette — It Must Have Been Love / Chances (1990 Cassette Single); actual cassette and sleeve condition described in listing",
+    description: "Original 1990 EMI blue cassette single featuring It Must Have Been Love and Chances. Cassette only; no original picture sleeve shown. Seller confirms that the cassette plays. Listing thumbnail is an illustration; please ask for the actual item photos before purchasing.",
+    category: '80s & Retro',
+    condition: "Pre-owned — tested and working; cassette only",
+    badge: 'Vintage Cassette Single',
+    status: 'available',
+    shippingQuoteOnly: false,
+    highlights: ["Original vintage cassette single","Cassette tested and working","One individual cassette for sale","Price 7.99 plus shipping","Condition and sleeve details in description"],
+    tags: "Roxette It Must Have Been Love Chances cassette single blue 1990 EMI Pretty Woman vintage retro music"
+  },
+  {
+    id: "right-said-fred-im-too-sexy-cassette",
+    name: "Right Said Fred — I'm Too Sexy (1991 Cassette Single)",
+    price: 5.99,
+    image: cassetteSaleArt("Right Said Fred", "I'm Too Sexy", "5.99", "#aa1d25", "#4b1116", "#222124"),
+    alt: "Illustrated sales image for Right Said Fred — I'm Too Sexy (1991 Cassette Single); actual cassette and sleeve condition described in listing",
+    description: "Original 1991 cassette single with its white picture sleeve featuring the red lipstick artwork. Sleeve has visible age and handling wear. Seller confirms that the cassette plays. Listing thumbnail is an illustration; please ask for the actual item photos before purchasing.",
+    category: '80s & Retro',
+    condition: "Pre-owned — tested and working; sleeve has wear",
+    badge: 'Vintage Cassette Single',
+    status: 'available',
+    shippingQuoteOnly: false,
+    highlights: ["Original vintage cassette single","Cassette tested and working","One individual cassette for sale","Price 5.99 plus shipping","Condition and sleeve details in description"],
+    tags: "Right Said Fred I'm Too Sexy 1991 cassette single 90s remix red lipstick sleeve vintage retro music"
+  },
+  {
+    id: "dino-gentle-cassette",
+    name: "Dino — Gentle (1990 Cassette Single)",
+    price: 5.99,
+    image: cassetteSaleArt("Dino", "Gentle", "5.99", "#77607c", "#563447", "#242328"),
+    alt: "Illustrated sales image for Dino — Gentle (1990 Cassette Single); actual cassette and sleeve condition described in listing",
+    description: "1990 Island Records cassette single featuring Gentle (Edit) and Gentle (LP Version), with original picture sleeve. Sleeve shows corner and edge wear. Seller confirms that the cassette plays. Listing thumbnail is an illustration; please ask for the actual item photos before purchasing.",
+    category: '80s & Retro',
+    condition: "Pre-owned — tested and working; sleeve shows wear",
+    badge: 'Vintage Cassette Single',
+    status: 'available',
+    shippingQuoteOnly: false,
+    highlights: ["Original vintage cassette single","Cassette tested and working","One individual cassette for sale","Price 5.99 plus shipping","Condition and sleeve details in description"],
+    tags: "Dino Gentle cassette 1990 Island Records single edit LP version vintage retro music"
+  },
+  {
+    id: "tim-mcgraw-dont-take-the-girl-cassette",
+    name: "Tim McGraw — Don't Take the Girl (1994 Cassette Single)",
+    price: 5.99,
+    image: cassetteSaleArt("Tim McGraw", "Don't Take the Girl", "5.99", "#784136", "#6b2727", "#c7c7c7"),
+    alt: "Illustrated sales image for Tim McGraw — Don't Take the Girl (1994 Cassette Single); actual cassette and sleeve condition described in listing",
+    description: "Original 1994 Curb Records country cassette single with its Tim McGraw picture sleeve. The cardboard sleeve shows visible edge and corner wear. Seller confirms that the cassette plays. Listing thumbnail is an illustration; please ask for the actual item photos before purchasing.",
+    category: '80s & Retro',
+    condition: "Pre-owned — tested and working; sleeve shows wear",
+    badge: 'Vintage Cassette Single',
+    status: 'available',
+    shippingQuoteOnly: false,
+    highlights: ["Original vintage cassette single","Cassette tested and working","One individual cassette for sale","Price 5.99 plus shipping","Condition and sleeve details in description"],
+    tags: "Tim McGraw Don't Take the Girl 1994 Curb Records cassette single country music vintage retro"
+  },
+
   {
     id: 'people-magazine-columbia-brave-hearts-2003',
     name: 'People Magazine — Columbia Crew Tribute (February 17, 2003)',
