@@ -1,5 +1,20 @@
 const PRODUCTS = [
   {
+    id: 'people-magazine-columbia-brave-hearts-2003',
+    name: 'People Magazine — Columbia Crew Tribute (February 17, 2003)',
+    price: 9.99,
+    image: 'assets/people-magazine-columbia-2003-sales.webp',
+    alt: 'Sales image of People magazine February 17, 2003 cover featuring the Space Shuttle Columbia crew, $9.99 plus shipping',
+    description: 'Complete February 17, 2003 issue of People magazine featuring the Brave Hearts cover story about the seven Space Shuttle Columbia crew members, with family and friends remembering their lives. Collectible historical magazine in like-new condition, as described by the seller.',
+    category: 'Collectibles',
+    condition: 'Like new — complete magazine',
+    badge: '2003 Collectible',
+    status: 'available',
+    shippingQuoteOnly: false,
+    highlights: ['People magazine dated February 17, 2003','Brave Hearts: Space Shuttle Columbia crew tribute','Complete original issue','Like-new condition (seller description)','$9.99 plus shipping'],
+    tags: 'People magazine 2003 February 17 Space Shuttle Columbia Brave Hearts astronauts NASA historical magazine collectible memorabilia complete'
+  },
+  {
     id: 'hjc-full-face-motorcycle-helmet-medium',
     name: 'HJC Full-Face Motorcycle Helmet — Size Small',
     price: 62.00,
