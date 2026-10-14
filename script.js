@@ -1,5 +1,15 @@
 const QUOTED_PAYMENT_URL = 'https://buy.stripe.com/eVqdR1bos31ZcBj8LxcAo07';
-fetch('script-main.js?v=cassette-images-20261013',{cache:'no-store'}).then(function(r){if(!r.ok)throw new Error('script-main.js failed to load: '+r.status);return r.text();}).then(function(code){
+// Keep the previous artwork visible until the four original sales photos are uploaded.
+document.addEventListener('error', function(event) {
+  var img = event.target;
+  if (!img || img.tagName !== 'IMG') return;
+  var path = img.getAttribute('src') || '';
+  if (/^assets\/cassette-(roxette|right-said-fred|dino|tim-mcgraw)-sale\.jpg$/.test(path)) {
+    img.src = path.replace(/\.jpg$/, '.svg');
+  }
+}, true);
+
+fetch('script-main.js?v=cassette-sale-photos-20261013',{cache:'no-store'}).then(function(r){if(!r.ok)throw new Error('script-main.js failed to load: '+r.status);return r.text();}).then(function(code){
   var newProducts = `{
     id: 'philips-wired-over-ear-headphones',
     name: 'Philips Wired Over-Ear Headphones',
