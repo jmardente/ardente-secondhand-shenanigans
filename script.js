@@ -1,5 +1,5 @@
 const QUOTED_PAYMENT_URL = 'https://buy.stripe.com/eVqdR1bos31ZcBj8LxcAo07';
-fetch('script-main.js?v=navfix-20260920',{cache:'no-store'}).then(function(r){if(!r.ok)throw new Error('script-main.js failed to load: '+r.status);return r.text();}).then(function(code){
+fetch('script-main.js?v=cassette-images-20261013',{cache:'no-store'}).then(function(r){if(!r.ok)throw new Error('script-main.js failed to load: '+r.status);return r.text();}).then(function(code){
   var newProducts = `{
     id: 'philips-wired-over-ear-headphones',
     name: 'Philips Wired Over-Ear Headphones',
@@ -178,7 +178,7 @@ if(quoteSection && !document.getElementById('quoted-payment-link')){
 const pageParams=new URLSearchParams(location.search);
 if(pageParams.get('payment')==='success'){
   const shop=document.getElementById('shop');
-  if(shop)shop.insertAdjacentHTML('afterbegin','<div style="background:#dceadf;border:2px solid #4d7556;color:#26472d;padding:12px;border-radius:10px;margin-bottom:16px"><strong>Payment received!</strong> Thank you. We will use the shipping address entered in Stripe to fulfill your order.</div>');
+  if(shop)shop.insertAdjacentHTML('afterbegin','<div style="background:#dceadf;border:2px solid #4d7556;color:#26472d;padding:12px;border-radius:10px;margin-bottom:16px"><strong>Payment follow-up:</strong> If you completed a Stripe payment, we will verify your transaction and confirm your order directly.</div>');
 }
 secondhandApplyShippingLabels();
 renderProducts();renderCart();
