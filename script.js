@@ -41,6 +41,7 @@ fetch('script-main.js?v=cassette-sale-photos-20261013',{cache:'no-store'}).then(
 `;
 
   var staticProducts = [
+    {id:'calliope-hummingbird-with-gentian-bronson-1996',name:'Calliope Hummingbird with Gentian — 1996 Bronson Collectibles',price:19.99,shippingQuoteOnly:false},
     {id:'farm-market-rooster-15-inch',name:'Farm Market Rooster — 15-Inch Figurine',price:69.99,shippingQuoteOnly:false},
     {id:'marcel-marceau-bip-lithographs',name:'Marcel Marceau — Pair of Signed & Numbered Bip Lithographs',price:799.99,shippingQuoteOnly:true},
     {id:'claude-monet-garden-replica',name:'Claude Monet — Hand-Painted Garden Replica',price:299.99,shippingQuoteOnly:true},
