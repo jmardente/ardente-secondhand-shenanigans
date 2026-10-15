@@ -2,6 +2,22 @@
 
 const PRODUCTS = [
   {
+    id: 'calliope-hummingbird-with-gentian-bronson-1996',
+    name: 'Calliope Hummingbird with Gentian — 1996 Bronson Collectibles',
+    price: 19.99,
+    image: 'assets/file_0000000004388230b3aa5251f05259ce.png',
+    alt: '1996 Bronson Collectibles Calliope Hummingbird with Gentian porcelain figurine sales image',
+    description: 'Vintage 1996 Bronson Collectibles Calliope Hummingbird with Gentian porcelain figurine, featuring a hovering green hummingbird, raised wings, blue gentian flower and sculpted leaves. Maker and date are stamped underneath. Owner confirms no chips, cracks, or damage. One figurine for sale.',
+    category: 'Collectibles',
+    condition: 'Excellent pre-owned — no damage',
+    badge: '1996 Porcelain Collectible',
+    status: 'available',
+    shippingQuoteOnly: false,
+    highlights: ['1996 Bronson Collectibles', 'Calliope Hummingbird with Gentian', 'Decorative porcelain figurine', 'Maker stamp on underside', 'No chips, cracks or damage, per owner', '$19.99 plus shipping'],
+    tags: 'Calliope hummingbird gentian Bronson Collectibles porcelain figurine 1996 bird flower green blue vintage decor animal collectible'
+  },
+
+  {
     id: "roxette-it-must-have-been-love-cassette",
     name: "Roxette — It Must Have Been Love / Chances (1990 Cassette Single)",
     price: 7.99,
